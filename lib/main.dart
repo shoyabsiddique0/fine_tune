@@ -1,4 +1,3 @@
-import 'package:fine_tune/Pages/AuthPage/LoginPage/login_screen.dart';
 import 'package:fine_tune/Routes/app_page.dart';
 import 'package:fine_tune/Routes/app_route.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(builder: (context, child) {
       return GetMaterialApp(
-        title: 'Flutter Demo',
         getPages: AppPage.getPages,
         initialRoute: AppRoute.loginScreen,
         debugShowCheckedModeBanner: false,
