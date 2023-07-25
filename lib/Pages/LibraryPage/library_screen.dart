@@ -186,6 +186,21 @@ class LibraryScreen extends StatelessWidget {
                     itemCount: controller.recentList.length),
               )),
           Header(
+              title: "Your Top Artist",
+              child: SizedBox(
+                height: 220.h,
+                child: ListView.builder(
+                    // padding: EdgeInsets.only(right: 20.w),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(right: 12.w),
+                        child: controller.featuredList[index],
+                      );
+                    },
+                    itemCount: controller.featuredList.length),
+              )),
+          Header(
               title: "Featured Albums",
               child: SizedBox(
                 height: 220.h,
