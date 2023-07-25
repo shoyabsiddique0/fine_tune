@@ -15,13 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(builder: (context, child) {
-      return GetMaterialApp(
-        getPages: AppPage.getPages,
-        initialRoute: AppRoute.loginScreen,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: Colors.blue,
-          brightness: Brightness.light,
+      return SafeArea(
+        child: GetMaterialApp(
+          getPages: AppPage.getPages,
+          initialRoute: AppRoute.loginScreen,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: Colors.blue,
+            brightness: Brightness.light,
+          ),
         ),
       );
     });

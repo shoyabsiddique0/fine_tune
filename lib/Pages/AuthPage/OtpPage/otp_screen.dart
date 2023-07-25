@@ -109,7 +109,7 @@ class OtpScreen extends StatelessWidget {
                 height: 40.h,
                 child: CustomButton(
                   title: "Verify OTP",
-                  func: () => Get.toNamed(AppRoute.homeScreen),
+                  func: () => Get.toNamed(AppRoute.bottomNavigationScreen),
                 ))),
         Positioned(
             top: 580.h,
