@@ -23,6 +23,7 @@ class OtpController extends GetxController {
   void onInit() {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     const oneSec = Duration(seconds: 1);
+    // ignore: unused_local_variable
     var timer = Timer.periodic(
       oneSec,
       (Timer timer) {

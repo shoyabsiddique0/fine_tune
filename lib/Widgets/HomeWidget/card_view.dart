@@ -1,7 +1,6 @@
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:main_ott/Theme/colors.dart';
 
@@ -44,7 +43,7 @@ class CardView extends StatelessWidget {
             Text(name,
                 style: GoogleFonts.poppins(
                     color: whiteColor,
-                    fontSize: 12.w,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.w500),
                 overflow: TextOverflow.ellipsis),
             SizedBox(
@@ -53,7 +52,7 @@ class CardView extends StatelessWidget {
             Text(episode,
                 style: GoogleFonts.poppins(
                     color: whiteColor.withOpacity(0.75),
-                    fontSize: 12.w,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.w500),
                 overflow: TextOverflow.ellipsis),
           ],

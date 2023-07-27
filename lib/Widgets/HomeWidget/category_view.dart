@@ -27,7 +27,9 @@ class CategoryView extends StatelessWidget {
           Text(
             "Top Audio Books",
             style: GoogleFonts.poppins(
-                fontSize: 10.w, fontWeight: FontWeight.w600, color: whiteColor),
+                fontSize: 10.sp,
+                fontWeight: FontWeight.w600,
+                color: whiteColor),
           )
         ],
       ),

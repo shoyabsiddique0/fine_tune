@@ -28,7 +28,7 @@ class PremiumScreen extends StatelessWidget {
                     "Upgrade now for",
                     style: GoogleFonts.poppins(
                       color: whiteColor.withOpacity(0.8),
-                      fontSize: 15.w,
+                      fontSize: 15.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -36,7 +36,7 @@ class PremiumScreen extends StatelessWidget {
                     "10000+ Audios",
                     style: GoogleFonts.poppins(
                       color: whiteColor,
-                      fontSize: 32.w,
+                      fontSize: 32.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),

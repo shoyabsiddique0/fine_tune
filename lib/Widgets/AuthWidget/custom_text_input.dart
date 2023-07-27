@@ -112,7 +112,7 @@ class CustomTextInput extends StatelessWidget {
             child: Obx(
               () => Text(
                 valText.value,
-                style: GoogleFonts.poppins(color: errorColor, fontSize: 12.w),
+                style: GoogleFonts.poppins(color: errorColor, fontSize: 12.sp),
               ),
             ),
           ),

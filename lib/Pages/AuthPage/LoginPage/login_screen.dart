@@ -62,7 +62,7 @@ class LoginScreen extends StatelessWidget {
               "FINE TUNE",
               style: GoogleFonts.poppins(
                   color: whiteColor,
-                  fontSize: 60.w,
+                  fontSize: 60.sp,
                   fontWeight: FontWeight.w600,
                   fontStyle: FontStyle.italic),
             ),
@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                         style: GoogleFonts.poppins(
                             color: whiteColor.withOpacity(0.8),
                             fontWeight: FontWeight.w500,
-                            fontSize: 14.w),
+                            fontSize: 14.sp),
                       ),
                     ],
                   ),
@@ -118,7 +118,7 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   " OR ",
                   style: GoogleFonts.poppins(
-                      color: whiteColor.withOpacity(0.5), fontSize: 15.w),
+                      color: whiteColor.withOpacity(0.5), fontSize: 15.sp),
                 ),
                 SizedBox(
                   width: 140.w,
@@ -148,20 +148,20 @@ class LoginScreen extends StatelessWidget {
           Positioned(
               // alignment: Alignment.bottomCenter,
               top: 630.h,
-              left: 8.w,
+              left: 15.w,
               child: Text.rich(
                 TextSpan(
                     text: "By continuing you accept out ",
                     style: GoogleFonts.poppins(
                         color: whiteColor.withOpacity(0.5),
-                        fontSize: 13.w,
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.w500),
                     children: [
                       TextSpan(
                         text: "Privacy Policy",
                         style: GoogleFonts.poppins(
                             color: whiteColor,
-                            fontSize: 13.w,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline),
                       ),
@@ -169,13 +169,13 @@ class LoginScreen extends StatelessWidget {
                           text: " and ",
                           style: GoogleFonts.poppins(
                               color: whiteColor.withOpacity(0.5),
-                              fontSize: 13.w,
+                              fontSize: 12.sp,
                               fontWeight: FontWeight.w500)),
                       TextSpan(
                         text: "T&C",
                         style: GoogleFonts.poppins(
                             color: whiteColor,
-                            fontSize: 13.w,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline),
                       ),

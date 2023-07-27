@@ -1,5 +1,4 @@
 import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
-import 'package:fine_tune/Routes/app_route.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +37,7 @@ class BottomNavigationScreen extends StatelessWidget {
                           Text(
                             "Upgrade Now to get 50% Off",
                             style: GoogleFonts.poppins(
-                                fontSize: 11.w,
+                                fontSize: 11.sp,
                                 fontWeight: FontWeight.w500,
                                 color: whiteColor.withOpacity(0.8)),
                           ),
@@ -54,13 +53,13 @@ class BottomNavigationScreen extends StatelessWidget {
                                 Text(
                                   "Upgrade",
                                   style: GoogleFonts.poppins(
-                                      fontSize: 11.w,
+                                      fontSize: 11.sp,
                                       fontWeight: FontWeight.w600,
                                       color: whiteColor),
                                 ),
                                 SvgPicture.asset(
                                   "assets/NavBarAssets/forward.svg",
-                                  width: 12.w,
+                                  width: 12.sp,
                                 ),
                               ],
                             ),

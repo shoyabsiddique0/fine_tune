@@ -39,7 +39,7 @@ class SubscriptionCard extends StatelessWidget {
                 "Current Plan",
                 style: GoogleFonts.poppins(
                   color: whiteColor,
-                  fontSize: 14.w,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -70,7 +70,7 @@ class SubscriptionCard extends StatelessWidget {
                     plan,
                     style: GoogleFonts.poppins(
                       color: whiteColor,
-                      fontSize: 24.w,
+                      fontSize: 24.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -89,7 +89,7 @@ class SubscriptionCard extends StatelessWidget {
                         "Subscribe",
                         style: GoogleFonts.poppins(
                             color: Colors.black,
-                            fontSize: 14.w,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w500),
                       ),
                     ),
@@ -106,7 +106,7 @@ class SubscriptionCard extends StatelessWidget {
               "From",
               style: GoogleFonts.poppins(
                 color: whiteColor,
-                fontSize: 12.w,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
               ),
             )),
@@ -117,7 +117,7 @@ class SubscriptionCard extends StatelessWidget {
               amount,
               style: GoogleFonts.poppins(
                 color: whiteColor,
-                fontSize: 22.w,
+                fontSize: 22.sp,
                 fontWeight: FontWeight.w400,
               ),
             )),

@@ -25,7 +25,7 @@ class OtpScreen extends StatelessWidget {
             "FINE TUNE",
             style: GoogleFonts.poppins(
                 color: whiteColor,
-                fontSize: 60.w,
+                fontSize: 60.sp,
                 fontWeight: FontWeight.w600,
                 fontStyle: FontStyle.italic),
           ),
@@ -38,7 +38,7 @@ class OtpScreen extends StatelessWidget {
               "OTP Verification",
               style: GoogleFonts.poppins(
                 color: Colors.white,
-                fontSize: 18.w,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w500,
               ),
             )),
@@ -46,7 +46,8 @@ class OtpScreen extends StatelessWidget {
           top: 380.h,
           width: ScreenUtil.defaultSize.width,
           child: Container(
-            margin: EdgeInsets.only(left: 35.w, right: 35.w),
+            margin: EdgeInsets.only(left: 35.w, right: 30.w),
+            width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -121,7 +122,7 @@ class OtpScreen extends StatelessWidget {
                   "Didn't Recieve OTP?",
                   style: GoogleFonts.poppins(
                     color: whiteColor,
-                    fontSize: 14.w,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -132,7 +133,7 @@ class OtpScreen extends StatelessWidget {
                         ? primaryColor
                         : Colors.grey,
                     decoration: TextDecoration.underline,
-                    fontSize: 14.w,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
       child: Text(
         title,
         style: GoogleFonts.poppins(
-            color: whiteColor, fontSize: 14.w, fontWeight: FontWeight.w400),
+            color: whiteColor, fontSize: 14.sp, fontWeight: FontWeight.w400),
       ),
       onPressed: func,
       style: ElevatedButton.styleFrom(

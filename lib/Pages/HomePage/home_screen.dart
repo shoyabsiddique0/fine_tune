@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fine_tune/Pages/HomePage/home_controller.dart';
+import 'package:fine_tune/Routes/app_route.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Widgets/HomeWidget/category_view.dart';
 import 'package:fine_tune/Widgets/HomeWidget/header.dart';
@@ -38,14 +39,14 @@ class HomeScreen extends StatelessWidget {
                         Text(
                           "Welcome to",
                           style: GoogleFonts.poppins(
-                              fontSize: 18.w,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                               color: whiteColor.withOpacity(0.75)),
                         ),
                         Text(
                           "FINE TUNE",
                           style: GoogleFonts.poppins(
-                              fontSize: 32.w,
+                              fontSize: 32.sp,
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.w500,
                               color: whiteColor),
@@ -62,10 +63,13 @@ class HomeScreen extends StatelessWidget {
                             "assets/AuthAssets/time.svg",
                             height: 28.w,
                           ),
-                          CircleAvatar(
-                            radius: 18.w,
-                            backgroundImage: const AssetImage(
-                                "assets/AuthAssets/profile.png"),
+                          GestureDetector(
+                            onTap: () => Get.toNamed(AppRoute.profileScreen),
+                            child: CircleAvatar(
+                              radius: 18.w,
+                              backgroundImage: const AssetImage(
+                                  "assets/AuthAssets/profile.png"),
+                            ),
                           )
                         ],
                       ),
