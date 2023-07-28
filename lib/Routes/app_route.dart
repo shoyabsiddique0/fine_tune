@@ -10,4 +10,5 @@ class AppRoute {
   static const String myListScreen = "/myListScreen";
   static const String editProfileScreen = "/editProfileScreen";
   static const String playlistScreen = "/playlistScreen";
+  static const String playerScreen = "/playerScreen";
 }

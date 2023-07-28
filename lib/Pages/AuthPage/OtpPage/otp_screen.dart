@@ -112,32 +112,36 @@ class OtpScreen extends StatelessWidget {
                   title: "Verify OTP",
                   func: () => Get.toNamed(AppRoute.bottomNavigationScreen),
                 ))),
-        Positioned(
-            top: 580.h,
-            width: ScreenUtil.defaultSize.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Didn't Recieve OTP?",
-                  style: GoogleFonts.poppins(
-                    color: whiteColor,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
+        Align(
+          alignment: Alignment.center,
+            // top: 580.h,
+            // width: ScreenUtil.defaultSize.width,
+            child: Padding(
+              padding: EdgeInsets.only(top: 520.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Didn't Recieve OTP?",
+                    style: GoogleFonts.poppins(
+                      color: whiteColor,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-                Text(
-                  "Resend",
-                  style: GoogleFonts.poppins(
-                    color: controller.start.value == 0
-                        ? primaryColor
-                        : Colors.grey,
-                    decoration: TextDecoration.underline,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
+                  Text(
+                    "Resend",
+                    style: GoogleFonts.poppins(
+                      color: controller.start.value == 0
+                          ? primaryColor
+                          : Colors.grey,
+                      decoration: TextDecoration.underline,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ))
       ]),
     );

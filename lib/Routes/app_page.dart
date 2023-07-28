@@ -10,6 +10,8 @@ import 'package:fine_tune/Pages/HomePage/home_binding.dart';
 import 'package:fine_tune/Pages/HomePage/home_screen.dart';
 import 'package:fine_tune/Pages/LibraryPage/library_binding.dart';
 import 'package:fine_tune/Pages/LibraryPage/library_screen.dart';
+import 'package:fine_tune/Pages/PlayerPage/player_binding.dart';
+import 'package:fine_tune/Pages/PlayerPage/player_screen.dart';
 import 'package:fine_tune/Pages/PremiumPage/premium_binding.dart';
 import 'package:fine_tune/Pages/PremiumPage/premium_screen.dart';
 import 'package:fine_tune/Pages/ProfilePage/EditProfilePage/edit_profile_binding.dart';
@@ -79,6 +81,11 @@ class AppPage {
         name: AppRoute.playlistScreen,
         page: () => const PlaylistScreen(),
         binding: PlaylistBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoute.playerScreen,
+        page: () => const PlayerScreen(),
+        binding: PlayerBinding(),
         transition: Transition.rightToLeft),
   ];
 }

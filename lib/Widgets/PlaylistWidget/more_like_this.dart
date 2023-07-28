@@ -18,7 +18,7 @@ class MoreLikeThis extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 10.w,
               crossAxisSpacing: 24.w,
-              childAspectRatio: 0.7.w),
+              childAspectRatio: 0.6.w),
           itemCount: controller.moreList.length,
           itemBuilder: (context, index) {
             return Column(

@@ -19,7 +19,7 @@ class BottomNavigationScreen extends StatelessWidget {
             data: ThemeData(canvasColor: const Color(0xff1b1c1c)),
             child: SizedBox(
               width: double.infinity,
-              height: 75.h,
+              height: 82.h,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [

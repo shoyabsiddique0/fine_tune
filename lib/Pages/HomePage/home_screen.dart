@@ -82,14 +82,14 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(
-                      height: 120.h,
+                      height: 114.h,
                       width: double.infinity,
                       child: CarouselSlider(
                           items: controller.carousel,
                           options: CarouselOptions(
-                              viewportFraction: 0.45.w,
+                              viewportFraction: 0.3.w,
                               disableCenter: true,
-                              enlargeFactor: 0.2,
+                              enlargeFactor: 0.2.w,
                               height: 120.h,
                               enlargeStrategy: CenterPageEnlargeStrategy.scale,
                               // pageSnapping: false,
@@ -138,6 +138,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 10.h,),
           Container(
             height: 160.h,
             margin: EdgeInsets.only(left: 24.w, right: 24.w),
@@ -156,6 +157,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 25.h,),
           Header(
               title: "Continue Listening",
               child: SizedBox(

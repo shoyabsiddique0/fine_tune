@@ -145,41 +145,44 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-              // alignment: Alignment.bottomCenter,
-              top: 630.h,
-              left: 15.w,
-              child: Text.rich(
-                TextSpan(
-                    text: "By continuing you accept out ",
-                    style: GoogleFonts.poppins(
-                        color: whiteColor.withOpacity(0.5),
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w500),
-                    children: [
-                      TextSpan(
-                        text: "Privacy Policy",
-                        style: GoogleFonts.poppins(
-                            color: whiteColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.underline),
-                      ),
-                      TextSpan(
-                          text: " and ",
+          Align(
+              alignment: Alignment.bottomCenter,
+              // top: 630.h,
+              // left: 15.w,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 12.0.h),
+                child: Text.rich(
+                  TextSpan(
+                      text: "By continuing you accept out ",
+                      style: GoogleFonts.poppins(
+                          color: whiteColor.withOpacity(0.5),
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500),
+                      children: [
+                        TextSpan(
+                          text: "Privacy Policy",
                           style: GoogleFonts.poppins(
-                              color: whiteColor.withOpacity(0.5),
+                              color: whiteColor,
                               fontSize: 12.sp,
-                              fontWeight: FontWeight.w500)),
-                      TextSpan(
-                        text: "T&C",
-                        style: GoogleFonts.poppins(
-                            color: whiteColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.underline),
-                      ),
-                    ]),
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.underline),
+                        ),
+                        TextSpan(
+                            text: " and ",
+                            style: GoogleFonts.poppins(
+                                color: whiteColor.withOpacity(0.5),
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500)),
+                        TextSpan(
+                          text: "T&C",
+                          style: GoogleFonts.poppins(
+                              color: whiteColor,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.underline),
+                        ),
+                      ]),
+                ),
               ))
         ],
       ),

@@ -38,7 +38,7 @@ class ListenNow extends StatelessWidget {
         Header(
             title: "Your Top Artist",
             child: SizedBox(
-              height: 180.h,
+              height: 210.h,
               child: ListView.builder(
                   // padding: EdgeInsets.only(right: 20.w),
                   scrollDirection: Axis.horizontal,

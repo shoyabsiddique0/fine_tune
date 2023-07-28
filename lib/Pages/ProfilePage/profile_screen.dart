@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 180.h,
+            height: 200.h,
             padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 20.h),
             // width: double.infinity,
             decoration: const BoxDecoration(
