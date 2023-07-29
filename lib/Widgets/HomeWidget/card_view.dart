@@ -21,6 +21,7 @@ class CardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey cardKey = GlobalKey();
     return InkWell(
       onTap: action,
       child: SizedBox(
@@ -30,12 +31,15 @@ class CardView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 145.h, child: Image.asset(image)),
+            SizedBox(height: 145.h, child: Image.asset(image, key: cardKey,)),
             isWatched
-                ? LinearProgressIndicator(
-                    value: 0.2,
-                    backgroundColor: Colors.grey.withOpacity(0.5),
-                  )
+                ? SizedBox(
+              width: 105.w,
+                  child: LinearProgressIndicator(
+                      value: 0.2,
+                      backgroundColor: Colors.grey.withOpacity(0.5),
+                    ),
+                )
                 : SizedBox.shrink(),
             SizedBox(
               height: 10.h,
@@ -59,5 +63,9 @@ class CardView extends StatelessWidget {
         ),
       ),
     );
+  }
+  double findWidth(GlobalKey cardKey){
+    var box = cardKey.currentContext?.findRenderObject() as RenderBox;
+    return box.size.width;
   }
 }

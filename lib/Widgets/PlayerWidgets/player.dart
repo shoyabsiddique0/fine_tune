@@ -4,6 +4,7 @@ import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fine_tune/Model/PlayerModel/position_data.dart';
 import 'package:fine_tune/Pages/PlayerPage/player_controller.dart';
+import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Widgets/PlayerWidgets/controls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,7 @@ class Player extends StatelessWidget {
       );
   @override
   Widget build(BuildContext context) {
-    controller.changeIndex(index - 1, duration);
+    // controller.changeIndex(index - 1, duration);
     return GestureDetector(
       onVerticalDragStart: (details) {
         controller.startPos.value = details.globalPosition;
@@ -49,6 +50,13 @@ class Player extends StatelessWidget {
       },
       onTap: () {},
       child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [primaryColor, Color(0xff1c1b1b)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter
+          )
+        ),
         padding: const EdgeInsets.only(top: 40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -70,9 +78,9 @@ class Player extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
-                              color: const Color(0x38EA3800),
-                              blurRadius: 10.w,
-                              spreadRadius: 2.w,
+                              color: whiteColor,
+                              blurRadius: 8.w,
+                              spreadRadius: 0.5.w,
                             )
                           ]),
                           child: Hero(
@@ -129,7 +137,7 @@ class Player extends StatelessWidget {
                   );
                 }),
             SizedBox(
-              height: 30.w,
+              height: 10.w,
             ),
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               StreamBuilder<PositionData>(

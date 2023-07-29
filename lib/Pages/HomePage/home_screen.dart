@@ -59,9 +59,12 @@ class HomeScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SvgPicture.asset(
-                            "assets/AuthAssets/time.svg",
-                            height: 28.w,
+                          GestureDetector(
+                            onTap: () => Get.toNamed(AppRoute.recentlyPlayedScreen),
+                            child: SvgPicture.asset(
+                              "assets/AuthAssets/time.svg",
+                              height: 28.w,
+                            ),
                           ),
                           GestureDetector(
                             onTap: () => Get.toNamed(AppRoute.profileScreen),

@@ -7,7 +7,7 @@ class PlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff1c1b1b),
+      backgroundColor: const Color(0xff1c1b1b),
       body: SingleChildScrollView(
         child: Column(
           children: [
