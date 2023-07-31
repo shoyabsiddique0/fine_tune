@@ -1,8 +1,10 @@
 import 'package:audio_service/audio_service.dart';
+import 'package:fine_tune/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 
 class PlayerController extends GetxController {
@@ -68,7 +70,7 @@ class PlayerController extends GetxController {
   void onInit() {
     // ignore: avoid_function_literals_in_foreach_calls
     playlist.children.forEach((element) =>
-    bookmarks["${playlist.children.indexOf(element) + 1}"] = <Duration>[]);
+        bookmarks["${playlist.children.indexOf(element) + 1}"] = <Duration>[]);
     _init();
     super.onInit();
   }
@@ -101,29 +103,42 @@ class PlayerController extends GetxController {
         findWidth(widgetkey);
         double bookmarkPosition = bookmark.inSeconds.toDouble();
         double bookmarkWidth = (bookmarkPosition /
-            audioPlayer.value.duration!.inSeconds.toDouble()) *
+                audioPlayer.value.duration!.inSeconds.toDouble()) *
             width.value;
         return GestureDetector(
           onTap: () => audioPlayer.value.seek(bookmark),
-          child: Container(
-            width: 11.5.w,
-            height: 20.0,
-            margin: EdgeInsets.only(left: bookmarkWidth),
-            // decoration: const BoxDecoration(
-            //     image: DecorationImage(
-            //         image: AssetImage(
-            //             "assets/PlaylistAssets/pin.png"))),
-            child: SvgPicture.asset("assets/PlaylistAssets/pin.svg",
-                // color: bookmark.inSeconds >=
-                //         position!.position.inSeconds
-                //     ? Colors.white
-                //     : Colors.red,
-                theme: SvgTheme(
-                  currentColor:
-                  bookmark.inSeconds >= position!.position.inSeconds
-                      ? Colors.white
-                      : Colors.red,
-                )),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Container(
+                width: 11.5.w,
+                height: 20.0,
+                margin: EdgeInsets.only(left: bookmarkWidth),
+                // decoration: const BoxDecoration(
+                //     image: DecorationImage(
+                //         image: AssetImage(
+                //             "assets/PlaylistAssets/pin.png"))),
+                child: SvgPicture.asset("assets/HomeAssets/pin.svg",
+                    // color: bookmark.inSeconds >=
+                    //         position!.position.inSeconds
+                    //     ? Colors.white
+                    //     : Colors.red,
+                    theme: SvgTheme(
+                      currentColor:
+                          bookmark.inSeconds >= position!.position.inSeconds
+                              ? Colors.white
+                              : primaryColor,
+                    )),
+              ),
+              Text(
+                "${bookmarkPosition.toInt().toString()}s",
+                style: GoogleFonts.poppins(
+                    fontSize: 10.sp,
+                    fontWeight: FontWeight.w400,
+                    color: whiteColor),
+              )
+            ],
           ),
         );
       }).toList();

@@ -1,5 +1,6 @@
 import 'package:fine_tune/Pages/HomePage/PlaylistPage/playlist_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
+import 'package:fine_tune/Theme/app_ratio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class MoreLikeThis extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 10.w,
               crossAxisSpacing: 24.w,
-              childAspectRatio: 0.6.w),
+              childAspectRatio: width / (height / 1.5)),
           itemCount: controller.moreList.length,
           itemBuilder: (context, index) {
             return Column(

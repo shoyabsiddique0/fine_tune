@@ -298,6 +298,9 @@ class ProfileScreen extends StatelessWidget {
                                   child: SvgPicture.asset(
                                       "assets/HomeAssets/delete.svg"),
                                 ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
                                 Text(
                                   "Delete Account",
                                   style: GoogleFonts.poppins(

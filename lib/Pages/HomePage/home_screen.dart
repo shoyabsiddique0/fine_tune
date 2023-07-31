@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fine_tune/Pages/HomePage/home_controller.dart';
 import 'package:fine_tune/Routes/app_route.dart';
 import 'package:fine_tune/Theme/app_color.dart';
+import 'package:fine_tune/Theme/app_ratio.dart';
 import 'package:fine_tune/Widgets/HomeWidget/category_view.dart';
 import 'package:fine_tune/Widgets/HomeWidget/header.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,8 @@ class HomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                            onTap: () => Get.toNamed(AppRoute.recentlyPlayedScreen),
+                            onTap: () =>
+                                Get.toNamed(AppRoute.recentlyPlayedScreen),
                             child: SvgPicture.asset(
                               "assets/AuthAssets/time.svg",
                               height: 28.w,
@@ -90,10 +92,10 @@ class HomeScreen extends StatelessWidget {
                       child: CarouselSlider(
                           items: controller.carousel,
                           options: CarouselOptions(
-                              viewportFraction: 0.3.w,
+                              viewportFraction: width / (height / 0.8),
                               disableCenter: true,
-                              enlargeFactor: 0.2.w,
-                              height: 120.h,
+                              enlargeFactor: width / (height / 0.35),
+                              // height: 120.h,
                               enlargeStrategy: CenterPageEnlargeStrategy.scale,
                               // pageSnapping: false,
                               initialPage: 0,
@@ -117,9 +119,9 @@ class HomeScreen extends StatelessWidget {
                                   .animateToPage(entry.key),
                               child: Container(
                                 width: 8.0.w,
-                                height: 8.0.w,
+                                height: 8.0.h,
                                 margin: EdgeInsets.symmetric(
-                                    vertical: 8.0.w, horizontal: 3.0.h),
+                                    vertical: 8.0.h, horizontal: 3.0.w),
                                 decoration: BoxDecoration(
                                     shape: controller.current.value == entry.key
                                         ? BoxShape.rectangle
@@ -141,7 +143,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 10.h,),
           Container(
             height: 160.h,
             margin: EdgeInsets.only(left: 24.w, right: 24.w),
@@ -151,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 24.w,
                   mainAxisSpacing: 24.w,
-                  childAspectRatio: 16.w / 6.5.w),
+                  childAspectRatio: width / (height / 4.8)),
               children: const [
                 CategoryView(),
                 CategoryView(),
@@ -160,7 +161,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 25.h,),
           Header(
               title: "Continue Listening",
               child: SizedBox(

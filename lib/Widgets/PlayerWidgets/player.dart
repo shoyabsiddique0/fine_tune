@@ -1,4 +1,3 @@
-
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -28,7 +27,7 @@ class Player extends StatelessWidget {
         controller.audioPlayer.value.positionStream,
         controller.audioPlayer.value.bufferedPositionStream,
         controller.audioPlayer.value.durationStream,
-            (position, bufferedPosition, duration) =>
+        (position, bufferedPosition, duration) =>
             PositionData(position, bufferedPosition, duration ?? Duration.zero),
       );
   @override
@@ -43,23 +42,20 @@ class Player extends StatelessWidget {
       },
       onVerticalDragEnd: (details) {
         if (controller.startPos.value.distance -
-            controller.endPos.value.distance <
+                controller.endPos.value.distance <
             Offset.zero.distance) {
           Get.back();
         }
       },
       onTap: () {},
       child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [primaryColor, Color(0xff1c1b1b)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
-          )
-        ),
-        padding: const EdgeInsets.only(top: 40),
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [primaryColor, Color(0xff1c1b1b)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter)),
+        padding: const EdgeInsets.only(top: 50),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             StreamBuilder<SequenceState?>(
                 stream: controller.audioPlayer.value.sequenceStateStream,
@@ -71,22 +67,23 @@ class Player extends StatelessWidget {
                   final metadata = state?.currentSource!.tag as MediaItem;
                   metaData = metadata;
                   return Container(
+                    // alignment: Alignment.center,
                     margin: EdgeInsets.only(left: 20.w, right: 20.w),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
                               color: whiteColor,
-                              blurRadius: 8.w,
-                              spreadRadius: 0.5.w,
+                              blurRadius: 15.w,
+                              spreadRadius: 2.w,
                             )
                           ]),
                           child: Hero(
                             tag: "image",
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(0),
                               child: CachedNetworkImage(
                                 imageUrl: metadata.artUri.toString(),
                                 placeholder: (context, url) => const Center(
@@ -97,15 +94,15 @@ class Player extends StatelessWidget {
                                   ),
                                 ),
                                 errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                                height: 320.w,
-                                width: 320.w,
+                                    const Icon(Icons.error),
+                                height: 260.h,
+                                width: 300.w,
                               ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: 50.w,
+                          height: 70.w,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,7 +111,7 @@ class Player extends StatelessWidget {
                               metadata.title,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 20.w,
+                                  fontSize: 18.w,
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w800),
                             ),
@@ -122,22 +119,26 @@ class Player extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          height: 2.w,
+                          height: 8.h,
                         ),
-                        Text(
-                          metadata.artist!,
-                          style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 14.w,
-                              fontFamily: "Poppins",
-                              fontWeight: FontWeight.w500),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            metadata.artist!,
+                            // textAlign: TextAlign.start,
+                            style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 12.w,
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                       ],
                     ),
                   );
                 }),
             SizedBox(
-              height: 10.w,
+              height: 22.h,
             ),
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               StreamBuilder<PositionData>(
@@ -157,25 +158,25 @@ class Player extends StatelessWidget {
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: SizedBox(
-                              height: 25.w,
+                              height: 22.5.h,
                               child: ProgressBar(
                                 key: controller.mywidgetkey.value,
-                                barHeight: 3.w,
+                                barHeight: 2.h,
                                 baseBarColor: Colors.white,
                                 bufferedBarColor: Colors.grey[300],
-                                progressBarColor: Colors.red,
-                                thumbColor: Colors.red,
+                                progressBarColor: primaryColor,
+                                thumbColor: primaryColor,
                                 thumbRadius: 5.w,
                                 progress: position?.position ?? Duration.zero,
                                 total: position?.duration ?? Duration.zero,
                                 buffered:
-                                position?.bufferedPosition ?? Duration.zero,
+                                    position?.bufferedPosition ?? Duration.zero,
                                 onSeek: (value) =>
                                     controller.audioPlayer.value.seek(value),
                                 timeLabelTextStyle: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     color: Colors.white,
-                                    fontSize: 12.w),
+                                    fontSize: 10.sp),
                                 barCapShape: BarCapShape.round,
                                 timeLabelPadding: 10.w,
                                 timeLabelType: TimeLabelType.totalTime,
@@ -190,44 +191,51 @@ class Player extends StatelessWidget {
                     );
                   }),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  TextButton(
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       controller.audioPlayer.value.seek(
                           controller.audioPlayer.value.position -
                               const Duration(seconds: 10));
                     },
                     child: SvgPicture.asset(
                       "assets/HomeAssets/10rev.svg",
+                      width: 30.w,
                     ),
                   ),
-                  TextButton(
-                      onPressed: () {
+                  InkWell(
+                      onTap: () {
                         controller.audioPlayer.value.seekToPrevious();
                       },
                       child: SvgPicture.asset(
                         "assets/HomeAssets/back1.svg",
+                        width: 25,
                       )),
-                  Controls(audioPlayer: controller.audioPlayer.value),
-                  TextButton(
-                      onPressed: () {
+                  SizedBox(
+                      width: 55.w,
+                      child:
+                          Controls(audioPlayer: controller.audioPlayer.value)),
+                  InkWell(
+                      onTap: () {
                         controller.audioPlayer.value.seekToNext();
                       },
                       child: SvgPicture.asset(
                         "assets/HomeAssets/forward.svg",
+                        width: 30.w,
                       )),
-                  TextButton(
-                      onPressed: () {
+                  InkWell(
+                      onTap: () {
                         controller.audioPlayer.value.seek(
                             controller.audioPlayer.value.position +
                                 const Duration(seconds: 10));
                       },
                       child: SvgPicture.asset(
                         "assets/HomeAssets/10for.svg",
+                        width: 30.w,
                       )),
                 ],
               ),
@@ -241,35 +249,39 @@ class Player extends StatelessWidget {
                           if (controller.audioPlayer.value.loopMode ==
                               LoopMode.all) {
                             controller.loopMode.value =
-                            !controller.loopMode.value;
+                                !controller.loopMode.value;
                             controller.audioPlayer.value
                                 .setLoopMode(LoopMode.one);
                           } else {
                             controller.loopMode.value =
-                            !controller.loopMode.value;
+                                !controller.loopMode.value;
                             controller.audioPlayer.value
                                 .setLoopMode(LoopMode.all);
                           }
                         },
                         child: Obx(() => SvgPicture.asset(
-                          controller.loopMode.value
-                              ? "assets/HomeAssets/repeat.svg"
-                              : "assets/HomeAssets/loopOne.svg",
-                          color: Colors.red,
-                        )),
+                              controller.loopMode.value
+                                  ? "assets/HomeAssets/repeat.svg"
+                                  : "assets/HomeAssets/loopOne.svg",
+                              // color: Colors.red,
+                            )),
                       ),
                       TextButton(
                         onPressed: () {
                           Get.bottomSheet(Container(
-                            color: Colors.black54,
-                            height: 280.h,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff1c1b1b),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(8.r),
+                                    topRight: Radius.circular(8.r))),
+                            height: 210.h,
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
                                         margin: EdgeInsets.only(
@@ -277,7 +289,7 @@ class Player extends StatelessWidget {
                                         width: 180.w,
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             SvgPicture.asset(
                                                 "assets/HomeAssets/playback.svg"),
@@ -303,11 +315,13 @@ class Player extends StatelessWidget {
                                     ],
                                   ),
                                   Obx(
-                                        () => Column(
+                                    () => Column(
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         ListTile(
+                                            visualDensity: const VisualDensity(
+                                                vertical: -4, horizontal: -2),
                                             onTap: () {
                                               controller.audioPlayer.value
                                                   .setSpeed(0.25);
@@ -316,13 +330,17 @@ class Player extends StatelessWidget {
                                             title: Text(
                                               "0.25x",
                                               style: TextStyle(
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.w400,
                                                   color: controller
-                                                      .playback.value ==
-                                                      1
-                                                      ? const Color(0xffC02739)
+                                                              .playback.value ==
+                                                          1
+                                                      ? primaryColor
                                                       : Colors.white),
                                             )),
                                         ListTile(
+                                            visualDensity: const VisualDensity(
+                                                vertical: -4, horizontal: -2),
                                             onTap: () {
                                               controller.playback.value = 2;
                                               controller.audioPlayer.value
@@ -330,13 +348,16 @@ class Player extends StatelessWidget {
                                             },
                                             title: Text("0.5x",
                                                 style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
                                                     color: controller.playback
-                                                        .value ==
-                                                        2
-                                                        ? const Color(
-                                                        0xffC02739)
+                                                                .value ==
+                                                            2
+                                                        ? primaryColor
                                                         : Colors.white))),
                                         ListTile(
+                                            visualDensity: const VisualDensity(
+                                                vertical: -4, horizontal: -2),
                                             onTap: () {
                                               controller.playback.value = 3;
                                               controller.audioPlayer.value
@@ -344,13 +365,16 @@ class Player extends StatelessWidget {
                                             },
                                             title: Text("0.75x",
                                                 style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
                                                     color: controller.playback
-                                                        .value ==
-                                                        3
-                                                        ? const Color(
-                                                        0xffC02739)
+                                                                .value ==
+                                                            3
+                                                        ? primaryColor
                                                         : Colors.white))),
                                         ListTile(
+                                            visualDensity: const VisualDensity(
+                                                vertical: -4, horizontal: -2),
                                             onTap: () {
                                               controller.playback.value = 4;
                                               controller.audioPlayer.value
@@ -358,13 +382,16 @@ class Player extends StatelessWidget {
                                             },
                                             title: Text("Normal",
                                                 style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
                                                     color: controller.playback
-                                                        .value ==
-                                                        4
-                                                        ? const Color(
-                                                        0xffC02739)
+                                                                .value ==
+                                                            4
+                                                        ? primaryColor
                                                         : Colors.white))),
                                         ListTile(
+                                            visualDensity: const VisualDensity(
+                                                vertical: -4, horizontal: -2),
                                             onTap: () {
                                               controller.audioPlayer.value
                                                   .setSpeed(1.25);
@@ -372,13 +399,16 @@ class Player extends StatelessWidget {
                                             },
                                             title: Text("1.25x",
                                                 style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
                                                     color: controller.playback
-                                                        .value ==
-                                                        5
-                                                        ? const Color(
-                                                        0xffC02739)
+                                                                .value ==
+                                                            5
+                                                        ? primaryColor
                                                         : Colors.white))),
                                         ListTile(
+                                            visualDensity: const VisualDensity(
+                                                vertical: -4, horizontal: -2),
                                             onTap: () {
                                               controller.playback.value = 6;
                                               controller.audioPlayer.value
@@ -386,13 +416,16 @@ class Player extends StatelessWidget {
                                             },
                                             title: Text("1.5x",
                                                 style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
                                                     color: controller.playback
-                                                        .value ==
-                                                        6
-                                                        ? const Color(
-                                                        0xffC02739)
+                                                                .value ==
+                                                            6
+                                                        ? primaryColor
                                                         : Colors.white))),
                                         ListTile(
+                                            visualDensity: const VisualDensity(
+                                                vertical: -4, horizontal: -2),
                                             onTap: () {
                                               controller.playback.value = 7;
                                               controller.audioPlayer.value
@@ -400,13 +433,16 @@ class Player extends StatelessWidget {
                                             },
                                             title: Text("1.75x",
                                                 style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
                                                     color: controller.playback
-                                                        .value ==
-                                                        7
-                                                        ? const Color(
-                                                        0xffC02739)
+                                                                .value ==
+                                                            7
+                                                        ? primaryColor
                                                         : Colors.white))),
                                         ListTile(
+                                            visualDensity: const VisualDensity(
+                                                vertical: -4, horizontal: -2),
                                             onTap: () {
                                               controller.playback.value = 8;
                                               controller.audioPlayer.value
@@ -414,11 +450,12 @@ class Player extends StatelessWidget {
                                             },
                                             title: Text("2x",
                                                 style: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    fontWeight: FontWeight.w400,
                                                     color: controller.playback
-                                                        .value ==
-                                                        8
-                                                        ? const Color(
-                                                        0xffC02739)
+                                                                .value ==
+                                                            8
+                                                        ? primaryColor
                                                         : Colors.white))),
                                       ],
                                     ),
@@ -447,7 +484,7 @@ class Player extends StatelessWidget {
                             }
                           },
                           child: Obx(
-                                () => SvgPicture.asset(
+                            () => SvgPicture.asset(
                               controller.muteVal.value
                                   ? "assets/HomeAssets/mute.svg"
                                   : "assets/HomeAssets/volume.svg",

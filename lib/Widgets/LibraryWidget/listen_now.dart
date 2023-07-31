@@ -44,7 +44,7 @@ class ListenNow extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: EdgeInsets.only(right: 12.w, top: 12.w),
+                      padding: EdgeInsets.only(right: 12.w, top: 10.h),
                       child: Column(children: [
                         CircleAvatar(
                           radius: 65.w,

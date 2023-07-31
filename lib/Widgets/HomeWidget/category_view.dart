@@ -18,7 +18,7 @@ class CategoryView extends StatelessWidget {
         color: Color(0xff3D3D3D),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(
               height: 40.w,

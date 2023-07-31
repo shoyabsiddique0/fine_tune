@@ -1,5 +1,6 @@
 import 'package:fine_tune/Pages/SearchPage/search_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
+import 'package:fine_tune/Theme/app_ratio.dart';
 import 'package:fine_tune/Widgets/LibraryWidget/custom_search_bar.dart';
 import 'package:fine_tune/Widgets/SearchWidget/browse.dart';
 import 'package:fine_tune/Widgets/SearchWidget/recent_search.dart';
@@ -123,7 +124,7 @@ class SearchScreen extends StatelessWidget {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 15.w,
-                      childAspectRatio: 1.5.w,
+                      childAspectRatio: width / (height / 3.2),
                       mainAxisSpacing: 15.w),
                   children: [
                     Browse(),
