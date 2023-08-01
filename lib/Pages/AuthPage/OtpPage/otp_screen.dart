@@ -61,6 +61,9 @@ class OtpScreen extends StatelessWidget {
                           prevNode: controller.node1,
                           isFilled: controller.isFilled1,
                         ),
+                        SizedBox(
+                          width: 13.w,
+                        ),
                         OtpText(
                           controller: controller.controller2,
                           hintText: "*",
@@ -70,6 +73,9 @@ class OtpScreen extends StatelessWidget {
                           prevNode: controller.node1,
                           isFilled: controller.isFilled2,
                         ),
+                        SizedBox(
+                          width: 13.w,
+                        ),
                         OtpText(
                           controller: controller.controller3,
                           hintText: "*",
@@ -78,6 +84,9 @@ class OtpScreen extends StatelessWidget {
                           nextNode: controller.node4,
                           prevNode: controller.node2,
                           isFilled: controller.isFilled3,
+                        ),
+                        SizedBox(
+                          width: 13.w,
                         ),
                         OtpText(
                           controller: controller.controller4,

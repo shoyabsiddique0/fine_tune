@@ -111,7 +111,7 @@ class Player extends StatelessWidget {
                               metadata.title,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 18.w,
+                                  fontSize: 18.sp,
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w800),
                             ),
@@ -128,7 +128,7 @@ class Player extends StatelessWidget {
                             // textAlign: TextAlign.start,
                             style: TextStyle(
                                 color: Colors.white70,
-                                fontSize: 12.w,
+                                fontSize: 12.sp,
                                 fontFamily: "Poppins",
                                 fontWeight: FontWeight.w500),
                           ),
@@ -297,7 +297,7 @@ class Player extends StatelessWidget {
                                               "PlayBack Speed",
                                               style: TextStyle(
                                                   color: Colors.white70,
-                                                  fontSize: 18.w,
+                                                  fontSize: 18.sp,
                                                   fontFamily: "Poppins",
                                                   fontWeight: FontWeight.w500),
                                             ),

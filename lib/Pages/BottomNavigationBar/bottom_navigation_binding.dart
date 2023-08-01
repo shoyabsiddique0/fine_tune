@@ -1,7 +1,10 @@
 import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
+import 'package:fine_tune/Pages/HomePage/PlaylistPage/playlist_controller.dart';
+import 'package:fine_tune/Pages/HomePage/RecentlyPlayedPage/recently_played_controller.dart';
 import 'package:fine_tune/Pages/HomePage/home_controller.dart';
 import 'package:fine_tune/Pages/LibraryPage/library_controller.dart';
 import 'package:fine_tune/Pages/PremiumPage/premium_controller.dart';
+import 'package:fine_tune/Pages/ProfilePage/profile_controller.dart';
 import 'package:fine_tune/Pages/SearchPage/search_controller.dart';
 import 'package:get/get.dart';
 
@@ -13,5 +16,8 @@ class BottomNavigationBinding extends Bindings {
     Get.lazyPut(() => PremiumController());
     Get.lazyPut(() => LibraryController());
     Get.lazyPut(() => SearchScreenController());
+    Get.lazyPut(() => PlaylistController());
+    Get.lazyPut(() => RecentlyPlayerController());
+    Get.lazyPut(() => ProfileController());
   }
 }
