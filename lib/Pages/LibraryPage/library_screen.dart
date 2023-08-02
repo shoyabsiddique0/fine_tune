@@ -1,4 +1,3 @@
-import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
 import 'package:fine_tune/Pages/LibraryPage/library_controller.dart';
 import 'package:fine_tune/Routes/app_route.dart';
 import 'package:fine_tune/Theme/app_color.dart';
@@ -65,9 +64,7 @@ class LibraryScreen extends StatelessWidget {
                         padding: EdgeInsets.only(top: 25.h),
                         // width: 85.w,
                         child: GestureDetector(
-                          onTap: () => Get.find<BottomNavigationController>()
-                              .libIndex
-                              .value = 1,
+                          onTap: () => Get.toNamed(AppRoute.profileScreen),
                           child: CircleAvatar(
                             radius: 18.w,
                             backgroundImage: const AssetImage(

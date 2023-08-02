@@ -27,7 +27,7 @@ class PlayerController extends GetxController {
   final playlist = ConcatenatingAudioSource(children: [
     AudioSource.uri(
         Uri.parse(
-            "https://pagalsong.in/uploads/systemuploads/mp3/Rab Ne Bana Di Jodi/Tujh Mein Rab Dikhta Hai - Rab Ne Bana Di Jodi 128 Kbps.mp3"),
+            "https://cdn.bitmovin.com/content/assets/art-of-motion-dash-hls-progressive/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa-audio-only.m3u8"),
         tag: MediaItem(
             id: "1",
             title: "Tujh Mein Rab Dikhta Hai",
