@@ -9,8 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart' as rx;
+import 'package:subtitle/subtitle.dart';
 
 // ignore: must_be_immutable
 class Player extends StatelessWidget {
@@ -82,23 +84,24 @@ class Player extends StatelessWidget {
                           ]),
                           child: Hero(
                             tag: "image",
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(0),
-                              child: CachedNetworkImage(
-                                imageUrl: metadata.artUri.toString(),
-                                placeholder: (context, url) => const Center(
-                                  child: CircularProgressIndicator(
-                                    value: 0.3,
-                                    color: Colors.greenAccent,
-                                    backgroundColor: Colors.grey,
-                                  ),
-                                ),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
-                                height: 260.h,
-                                width: 300.w,
-                              ),
-                            ),
+                            // child: ClipRRect(
+                            //   borderRadius: BorderRadius.circular(0),
+                            //   child: CachedNetworkImage(
+                            //     imageUrl: metadata.artUri.toString(),
+                            //     placeholder: (context, url) => const Center(
+                            //       child: CircularProgressIndicator(
+                            //         value: 0.3,
+                            //         color: Colors.greenAccent,
+                            //         backgroundColor: Colors.grey,
+                            //       ),
+                            //     ),
+                            //     errorWidget: (context, url, error) =>
+                            //         const Icon(Icons.error),
+                            //     height: 260.h,
+                            //     width: 300.w,
+                            //   ),
+                            // ),
+                            child: Obx(() => _buildFlipAnimation(metadata)),
                           ),
                         ),
                         SizedBox(
@@ -115,7 +118,17 @@ class Player extends StatelessWidget {
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w800),
                             ),
-                            SvgPicture.asset("assets/HomeAssets/heart.svg")
+                            InkWell(
+                                onTap: () async {
+                                  List<Subtitle> srtFile =
+                                      await controller.getCloseCaptionFile(
+                                          "https://ott-2.s3.eu-north-1.amazonaws.com/Taylor-Swift-Love-Story.srt");
+                                  const AsyncSnapshot.waiting();
+                                  controller.caption.value = srtFile;
+                                  print("--->$srtFile");
+                                },
+                                child: SvgPicture.asset(
+                                    "assets/HomeAssets/heart.svg"))
                           ],
                         ),
                         SizedBox(
@@ -507,5 +520,63 @@ class Player extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildFlipAnimation(metadata) {
+    return GestureDetector(
+        onTap: () =>
+            controller.showFrontSide.value = !controller.showFrontSide.value,
+        child: AnimatedSwitcher(
+          duration: Duration(milliseconds: 1000),
+          child: controller.showFrontSide.value
+              ? _buildFront(metadata)
+              : _buildRear(),
+        ));
+  }
+
+  Widget _buildFront(metadata) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(0),
+      child: CachedNetworkImage(
+        imageUrl: metadata.artUri.toString(),
+        placeholder: (context, url) => const Center(
+          child: CircularProgressIndicator(
+            value: 0.3,
+            color: Colors.greenAccent,
+            backgroundColor: Colors.grey,
+          ),
+        ),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
+        height: 260.h,
+        width: 300.w,
+      ),
+    );
+  }
+
+  Widget _buildRear() {
+    return Container(
+        height: 260.h,
+        width: 300.w,
+        padding:
+            EdgeInsets.only(left: 25.w, right: 25.w, top: 10.h, bottom: 10.h),
+        child: SingleChildScrollView(
+          child: Obx(
+            () => Column(
+                children: controller.caption.map((element) {
+              print(controller.currentSubtitle?.value?.data);
+              return Text(
+                element.data,
+                style: GoogleFonts.poppins(
+                    color: Colors.black,
+                    fontSize: 10.sp,
+                    fontWeight:
+                        controller.currentSubtitle?.value?.data == element.data
+                            ? FontWeight.w700
+                            : FontWeight.w400),
+                textAlign: TextAlign.center,
+              );
+            }).toList()),
+          ),
+        ));
   }
 }
