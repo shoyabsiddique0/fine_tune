@@ -1,4 +1,5 @@
 import 'package:audio_service/audio_service.dart';
+import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -80,6 +81,12 @@ class PlayerController extends GetxController {
         bookmarks["${playlist.children.indexOf(element) + 1}"] = <Duration>[]);
     _init();
     super.onInit();
+  }
+
+  @override
+  void onReady() {
+    Get.find<BottomNavigationController>().displayNav.value = false;
+    super.onReady();
   }
 
   void _init() async {
@@ -172,6 +179,7 @@ class PlayerController extends GetxController {
 
   @override
   void onClose() {
+    Get.find<BottomNavigationController>().displayNav.value = true;
     audioPlayer.value.dispose();
     super.onClose();
   }

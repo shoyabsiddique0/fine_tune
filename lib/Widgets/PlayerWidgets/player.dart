@@ -15,15 +15,22 @@ import 'package:rxdart/rxdart.dart' as rx;
 import 'package:subtitle/subtitle.dart';
 
 // ignore: must_be_immutable
-class Player extends StatelessWidget {
+class Player extends StatefulWidget {
   final int index;
   final Duration duration;
   Player({Key? key, required this.index, required this.duration})
       : super(key: key);
+
+  @override
+  State<Player> createState() => _PlayerState();
+}
+
+class _PlayerState extends State<Player> {
   // final mywidgetkey = GlobalKey();
-  // var width;
   MediaItem? metaData;
+
   PlayerController controller = Get.find<PlayerController>();
+
   Stream<PositionData> get _positionDataStream =>
       rx.Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
         controller.audioPlayer.value.positionStream,
@@ -32,6 +39,7 @@ class Player extends StatelessWidget {
         (position, bufferedPosition, duration) =>
             PositionData(position, bufferedPosition, duration ?? Duration.zero),
       );
+
   @override
   Widget build(BuildContext context) {
     // controller.changeIndex(index - 1, duration);
@@ -101,7 +109,7 @@ class Player extends StatelessWidget {
                             //     width: 300.w,
                             //   ),
                             // ),
-                            child: Obx(() => _buildFlipAnimation(metadata)),
+                            child: _buildFlipAnimation(metadata),
                           ),
                         ),
                         SizedBox(
@@ -526,11 +534,13 @@ class Player extends StatelessWidget {
     return GestureDetector(
         onTap: () =>
             controller.showFrontSide.value = !controller.showFrontSide.value,
-        child: AnimatedSwitcher(
-          duration: Duration(milliseconds: 1000),
-          child: controller.showFrontSide.value
-              ? _buildFront(metadata)
-              : _buildRear(),
+        child: Obx(
+          () => AnimatedSwitcher(
+            duration: Duration(milliseconds: 2000),
+            child: controller.showFrontSide.value
+                ? _buildFront(metadata)
+                : _buildRear(),
+          ),
         ));
   }
 
@@ -559,24 +569,26 @@ class Player extends StatelessWidget {
         width: 300.w,
         padding:
             EdgeInsets.only(left: 25.w, right: 25.w, top: 10.h, bottom: 10.h),
-        child: SingleChildScrollView(
-          child: Obx(
-            () => Column(
-                children: controller.caption.map((element) {
-              print(controller.currentSubtitle?.value?.data);
-              return Text(
-                element.data,
-                style: GoogleFonts.poppins(
-                    color: Colors.black,
-                    fontSize: 10.sp,
-                    fontWeight:
-                        controller.currentSubtitle?.value?.data == element.data
+        child: Obx(
+          () => ListView.builder(
+              itemCount: controller.caption.length,
+              itemBuilder: (context, index) {
+                print("###${controller.currentSubtitle?.value?.data}");
+                print('@@@@@@@@@@@${controller.caption[index].data}');
+                return Obx(
+                  () => Text(
+                    controller.caption[index].data,
+                    style: GoogleFonts.poppins(
+                        color: Colors.black,
+                        fontSize: 10.sp,
+                        fontWeight: controller.currentSubtitle?.value?.data ==
+                                controller.caption[index].data
                             ? FontWeight.w700
                             : FontWeight.w400),
-                textAlign: TextAlign.center,
-              );
-            }).toList()),
-          ),
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              }),
         ));
   }
 }

@@ -14,6 +14,12 @@ class HomeController extends GetxController {
     Image.asset("assets/HomeAssets/image.png"),
     Image.asset("assets/HomeAssets/image.png"),
   ];
+  @override
+  void onReady() {
+    Get.find<BottomNavigationController>().displayNav.value = true;
+    super.onReady();
+  }
+
   var controller = CarouselController();
   var current = 0.obs;
   var pageController = PageController().obs;
