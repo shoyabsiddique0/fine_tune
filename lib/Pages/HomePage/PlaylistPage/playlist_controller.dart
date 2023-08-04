@@ -2,6 +2,7 @@ import 'package:fine_tune/Routes/app_route.dart';
 import 'package:fine_tune/Widgets/LibraryWidget/watchlist_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subtitle/subtitle.dart';
 
 class PlaylistController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -141,8 +142,28 @@ class PlaylistController extends GetxController
         isDownloads: false),
   ].obs;
   @override
-  void onInit() {
+  void onInit() async {
     tabController = TabController(length: 4, vsync: this);
+    var url = Uri.parse(
+        'https://brenopolanski.github.io/html5-video-webvtt-example/MIB2-subtitles-pt-BR.vtt');
+    var controller = SubtitleController(
+        provider: SubtitleProvider.fromNetwork(
+      url,
+      type: SubtitleType.vtt,
+    ));
+    print(controller.initialized);
+    await controller.initial();
+    print(controller.initialized);
+    print(controller.subtitles);
+    printResult(controller.subtitles);
     super.onInit();
+  }
+
+  void printResult(List<Subtitle> subtitles) {
+    subtitles.sort((s1, s2) => s1.compareTo(s2));
+    for (var result in subtitles) {
+      print(
+          '--->(${result.index}) Start: ${result.start}, end: ${result.end} [${result.data}]');
+    }
   }
 }

@@ -28,7 +28,7 @@ class Background extends StatelessWidget {
             //   ).image,
             // ),
             gradient: LinearGradient(colors: [
-              const Color(0xff103035).withOpacity(0.45),
+              const Color(0xff103035).withOpacity(0.35),
               Colors.transparent
             ], stops: const [
               0,

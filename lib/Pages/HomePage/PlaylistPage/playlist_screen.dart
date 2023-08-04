@@ -1,3 +1,4 @@
+import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
 import 'package:fine_tune/Pages/HomePage/PlaylistPage/playlist_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Widgets/PlaylistWidget/bookmark.dart';
@@ -15,7 +16,7 @@ class PlaylistScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PlaylistController controller = Get.find<PlaylistController>();
+    PlaylistController controller = Get.put(PlaylistController());
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -43,7 +44,9 @@ class PlaylistScreen extends StatelessWidget {
                     top: 20.h,
                     left: 20.w,
                     child: InkWell(
-                        onTap: () => Get.back(),
+                        onTap: () => Get.find<BottomNavigationController>()
+                            .homeIndex
+                            .value = 0,
                         child: SvgPicture.asset(
                           "assets/HomeAssets/prev.svg",
                           fit: BoxFit.scaleDown,

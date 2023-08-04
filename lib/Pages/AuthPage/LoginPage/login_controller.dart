@@ -1,3 +1,4 @@
+import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginController extends GetxController {
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    Get.find<BottomNavigationController>().displayNav.value = false;
+    super.onInit();
+  }
   var phoneController = TextEditingController().obs;
   var valMob = "".obs;
   void validateMobile(String? value) {
@@ -18,7 +25,6 @@ class LoginController extends GetxController {
       valMob.value = "";
     }
   }
-
   @override
   void onReady() {
     Get.bottomSheet(
@@ -95,4 +101,5 @@ class LoginController extends GetxController {
         barrierColor: whiteColor.withOpacity(0.1));
     super.onReady();
   }
+  
 }

@@ -45,6 +45,11 @@ dependencies:
   audio_service: ^0.18.10
   audio_video_progress_bar: ^1.0.1
   cached_network_image: ^3.2.3
+  persistent_bottom_nav_bar: ^5.0.2
+  subtitle: ^0.1.0-beta.3
+  http: ^1.1.0
+  rxdart:
+  marquee:
 
 dev_dependencies:
   flutter_test:

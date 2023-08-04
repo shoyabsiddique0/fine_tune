@@ -13,5 +13,8 @@ class BottomNavigationBinding extends Bindings {
     Get.lazyPut(() => PremiumController());
     Get.lazyPut(() => LibraryController());
     Get.lazyPut(() => SearchScreenController());
+    // Get.lazyPut(() => PlaylistController());
+    // Get.lazyPut(() => RecentlyPlayerController());
+    // Get.lazyPut(() => ProfileController());
   }
 }

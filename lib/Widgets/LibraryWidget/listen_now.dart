@@ -38,7 +38,7 @@ class ListenNow extends StatelessWidget {
         Header(
             title: "Your Top Artist",
             child: SizedBox(
-              height: 210.h,
+              height: 170.h,
               child: ListView.builder(
                   // padding: EdgeInsets.only(right: 20.w),
                   scrollDirection: Axis.horizontal,
@@ -47,7 +47,7 @@ class ListenNow extends StatelessWidget {
                       padding: EdgeInsets.only(right: 12.w, top: 10.h),
                       child: Column(children: [
                         CircleAvatar(
-                          radius: 65.w,
+                          radius: 65.r,
                           backgroundImage: Image.asset(
                             "assets/HomeAssets/artist.png",
                             fit: BoxFit.fill,

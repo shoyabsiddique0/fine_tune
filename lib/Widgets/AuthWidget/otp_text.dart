@@ -25,70 +25,65 @@ class OtpText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 13.w),
-      // width: 60.w,
-      // height: 60.h,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Obx(
-            () => Container(
-              decoration: BoxDecoration(
-                color: isFilled.value
-                    ? Color(0xffEEEEF2).withOpacity(0.5)
-                    : whiteColor.withOpacity(0.25),
-                borderRadius: BorderRadius.circular(8.w),
-              ),
-              height: 55.h,
-              width: 60.w,
-              child: TextFormField(
-                maxLength: 1,
-                controller: controller,
-                focusNode: currNode,
-                onChanged: (value) {
-                  if (controller.text.isNotEmpty) {
-                    isFilled.value = true;
-                    FocusScope.of(context).requestFocus(nextNode);
-                    if (currNode == nextNode) {
-                      Get.focusScope!.unfocus();
-                    }
-                  } else {
-                    isFilled.value = false;
-                    FocusScope.of(context).requestFocus(prevNode);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Obx(
+          () => Container(
+            decoration: BoxDecoration(
+              color: isFilled.value
+                  ? Color(0xffEEEEF2).withOpacity(0.5)
+                  : whiteColor.withOpacity(0.25),
+              borderRadius: BorderRadius.circular(8.w),
+            ),
+            height: 55.h,
+            width: 60.w,
+            child: TextFormField(
+              maxLength: 1,
+              controller: controller,
+              focusNode: currNode,
+              onChanged: (value) {
+                if (controller.text.isNotEmpty) {
+                  isFilled.value = true;
+                  FocusScope.of(context).requestFocus(nextNode);
+                  if (currNode == nextNode) {
+                    Get.focusScope!.unfocus();
                   }
-                },
-                // autovalidateMode: AutovalidateMode.onUserInteraction,
-                obscureText: inputType == TextInputType.visiblePassword,
-                style: GoogleFonts.poppins(color: Colors.white),
-                expands: !(inputType == TextInputType.visiblePassword),
-                maxLines: inputType == TextInputType.visiblePassword ? 1 : null,
-                minLines: inputType == TextInputType.visiblePassword ? 1 : null,
-                keyboardType: inputType,
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  counterText: "",
-                  hintStyle:
-                      GoogleFonts.poppins(color: whiteColor.withOpacity(0.25)),
-                  hintText: hintText,
-                  border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: Colors.transparent, width: double.minPositive),
-                      borderRadius: BorderRadius.circular(8.w)),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: Colors.transparent, width: double.minPositive),
-                      borderRadius: BorderRadius.circular(8.w)),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: Colors.transparent, width: double.minPositive),
-                      borderRadius: BorderRadius.circular(8.w)),
-                ),
+                } else {
+                  isFilled.value = false;
+                  FocusScope.of(context).requestFocus(prevNode);
+                }
+              },
+              // autovalidateMode: AutovalidateMode.onUserInteraction,
+              obscureText: inputType == TextInputType.visiblePassword,
+              style: GoogleFonts.poppins(color: Colors.white),
+              expands: !(inputType == TextInputType.visiblePassword),
+              maxLines: inputType == TextInputType.visiblePassword ? 1 : null,
+              minLines: inputType == TextInputType.visiblePassword ? 1 : null,
+              keyboardType: inputType,
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                counterText: "",
+                hintStyle:
+                    GoogleFonts.poppins(color: whiteColor.withOpacity(0.25)),
+                hintText: hintText,
+                border: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                        color: Colors.transparent, width: double.minPositive),
+                    borderRadius: BorderRadius.circular(8.w)),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                        color: Colors.transparent, width: double.minPositive),
+                    borderRadius: BorderRadius.circular(8.w)),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                        color: Colors.transparent, width: double.minPositive),
+                    borderRadius: BorderRadius.circular(8.w)),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

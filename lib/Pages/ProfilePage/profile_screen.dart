@@ -101,7 +101,7 @@ class ProfileScreen extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Get.find<BottomNavigationController>().pageIndex.value = 2;
-              Get.back();
+              // Get.back();
             },
             child: Container(
               height: 52.h,
