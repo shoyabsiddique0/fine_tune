@@ -1,5 +1,4 @@
 import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
-import 'package:fine_tune/Pages/CustomNavigator/custom_navigation.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
