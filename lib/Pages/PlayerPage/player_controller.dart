@@ -85,7 +85,6 @@ class PlayerController extends GetxController {
 
   @override
   void onReady() {
-    Get.find<BottomNavigationController>().displayNav.value = false;
     super.onReady();
   }
 

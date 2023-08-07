@@ -94,9 +94,9 @@ class HomeScreen extends StatelessWidget {
                         child: CarouselSlider(
                             items: controller.carousel,
                             options: CarouselOptions(
-                                viewportFraction: width / (height / 0.8),
+                                viewportFraction: width / (height / 0.55),
                                 disableCenter: true,
-                                enlargeFactor: width / (height / 0.35),
+                                enlargeFactor: width / (height / 0.25),
                                 // height: 120.h,
                                 enlargeStrategy:
                                     CenterPageEnlargeStrategy.scale,

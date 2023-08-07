@@ -1,8 +1,10 @@
+import 'package:fine_tune/Pages/PlayerPage/player_view_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Widgets/PlayerWidgets/player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PlayerScreen extends StatelessWidget {
@@ -10,6 +12,7 @@ class PlayerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PlayerViewController controller = Get.find<PlayerViewController>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
