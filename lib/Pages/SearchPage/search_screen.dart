@@ -16,7 +16,7 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SearchScreenController controller = Get.find<SearchScreenController>();
     return Scaffold(
-      backgroundColor: Color(0xff1c1b1b),
+      backgroundColor: const Color(0xff1c1b1b),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,7 +129,8 @@ class SearchScreen extends StatelessWidget {
                         crossAxisSpacing: 15.w,
                         childAspectRatio: width / (height / 3.2),
                         mainAxisSpacing: 15.w),
-                    children: [
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: const [
                       Browse(),
                       Browse(),
                       Browse(),
@@ -141,7 +142,6 @@ class SearchScreen extends StatelessWidget {
                       Browse(),
                       Browse(),
                     ],
-                    physics: NeverScrollableScrollPhysics(),
                   ),
                   SizedBox(
                     height: 40.h,

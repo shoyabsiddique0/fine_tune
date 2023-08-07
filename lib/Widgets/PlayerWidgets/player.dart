@@ -14,11 +14,10 @@ import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart' as rx;
 import 'package:subtitle/subtitle.dart';
 
-// ignore: must_be_immutable
 class Player extends StatefulWidget {
   final int index;
   final Duration duration;
-  Player({Key? key, required this.index, required this.duration})
+  const Player({Key? key, required this.index, required this.duration})
       : super(key: key);
 
   @override
@@ -78,7 +77,7 @@ class _PlayerState extends State<Player> {
                   metaData = metadata;
                   return Container(
                     // alignment: Alignment.center,
-                    margin: EdgeInsets.only(left: 20.w, right: 20.w),
+                    margin: EdgeInsets.only(left: 24.w, right: 24.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -547,18 +546,19 @@ class _PlayerState extends State<Player> {
   Widget _buildFront(metadata) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(0),
-      child: CachedNetworkImage(
-        imageUrl: metadata.artUri.toString(),
-        placeholder: (context, url) => const Center(
-          child: CircularProgressIndicator(
-            value: 0.3,
-            color: Colors.greenAccent,
-            backgroundColor: Colors.grey,
+      child: Container(
+        width: double.infinity,
+        child: CachedNetworkImage(
+          imageUrl: metadata.artUri.toString(),
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(
+              value: 0.3,
+              color: Colors.greenAccent,
+              backgroundColor: Colors.grey,
+            ),
           ),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
-        errorWidget: (context, url, error) => const Icon(Icons.error),
-        height: 260.h,
-        width: 300.w,
       ),
     );
   }
@@ -581,10 +581,10 @@ class _PlayerState extends State<Player> {
                     style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontSize: 10.sp,
-                        fontWeight: controller.currentSubtitle?.value?.data ==
-                                controller.caption[index].data
-                            ? FontWeight.w700
-                            : FontWeight.w400),
+                        fontWeight:
+                            controller.currentSubtitle?.value?.index == index
+                                ? FontWeight.w700
+                                : FontWeight.w400),
                     textAlign: TextAlign.center,
                   ),
                 );

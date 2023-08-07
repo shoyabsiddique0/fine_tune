@@ -1,5 +1,4 @@
 import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_binding.dart';
-import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
 import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_screen.dart';
 import 'package:fine_tune/Routes/app_page.dart';
 import 'package:fine_tune/Routes/app_route.dart';
@@ -27,9 +26,6 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.light,
           ),
           builder: (context, child) {
-            BottomNavigationController controller =
-                Get.find<BottomNavigationController>();
-            print(Get.currentRoute);
             // if (Get.currentRoute == AppRoute.otpScreen ||
             //     Get.currentRoute == AppRoute.loginScreen ||
             //     Get.currentRoute == "") {
@@ -40,14 +36,7 @@ class MyApp extends StatelessWidget {
                 OverlayEntry(
                   builder: (context) => Stack(
                     alignment: Alignment.bottomCenter,
-                    children: [
-                      child!,
-                      Obx(
-                        () => Visibility(
-                            visible: controller.displayNav.value,
-                            child: const BottomNavigationScreen()),
-                      ),
-                    ],
+                    children: [child!, const BottomNavigationScreen()],
                   ),
                 )
               ],

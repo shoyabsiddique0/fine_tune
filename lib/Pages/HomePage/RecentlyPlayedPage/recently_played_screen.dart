@@ -65,48 +65,62 @@ class RecentlyPlayedScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 20.h),
+                    margin:
+                        EdgeInsets.only(left: 24.w, right: 24.w, bottom: 20.h),
                     child: e.key.day == DateTime.now().day &&
                             e.key.month == DateTime.now().month &&
                             e.key.year == DateTime.now().year
-                        ? Text("Today", style: GoogleFonts.poppins(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      color: whiteColor
-                    ),)
+                        ? Text(
+                            "Today",
+                            style: GoogleFonts.poppins(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: whiteColor),
+                          )
                         : DateTime.now().subtract(Duration(hours: 24)).day ==
                                     e.key.day &&
                                 DateTime.now()
                                         .subtract(Duration(hours: 24))
                                         .month ==
                                     e.key.month &&
-                                DateTime.now().subtract(Duration(hours: 24)).year ==
+                                DateTime.now()
+                                        .subtract(Duration(hours: 24))
+                                        .year ==
                                     e.key.year
-                            ? Text("Yesterday", style: GoogleFonts.poppins(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                        color: whiteColor
-                    ),)
-                            : Text("${e.key.day}/${e.key.month}/${e.key.year}", style: GoogleFonts.poppins(
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                        color: whiteColor
-                    ),),
+                            ? Text(
+                                "Yesterday",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: whiteColor),
+                              )
+                            : Text(
+                                "${e.key.day}/${e.key.month}/${e.key.year}",
+                                style: GoogleFonts.poppins(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: whiteColor),
+                              ),
                   ),
                   Column(
                     children: e.value.map((e) => e).toList(),
                   ),
                   Center(
                     // padding: EdgeInsets.only(top: 10.h),
-                    child: Text("View All", style: GoogleFonts.poppins(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                    color: whiteColor
-                    ),),
+                    child: Text(
+                      "View All",
+                      style: GoogleFonts.poppins(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                          color: whiteColor),
+                    ),
                   )
                 ],
               );
-            }).toList())
+            }).toList()),
+            SizedBox(
+              height: 160.h,
+            )
           ],
         ),
       ),

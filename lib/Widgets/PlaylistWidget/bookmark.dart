@@ -14,6 +14,7 @@ class Bookmark extends StatelessWidget {
       margin: EdgeInsets.only(left: 24.w, right: 24.w, top: 10.h),
       child: ListView.builder(
           itemCount: controller.bookmarkList.length,
+          physics: NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.only(bottom: 13.h),

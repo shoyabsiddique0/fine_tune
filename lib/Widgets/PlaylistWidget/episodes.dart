@@ -12,7 +12,7 @@ class Episodes extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 5.h),
       child: ListView(
-          shrinkWrap: true,
+          // shrinkWrap: false,
           // physics: const NeverScrollableScrollPhysics(),
           children: controller.episodeList),
     );

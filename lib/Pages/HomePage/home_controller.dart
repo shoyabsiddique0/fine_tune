@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
-import 'package:fine_tune/Pages/HomePage/PlaylistPage/playlist_screen.dart';
 import 'package:fine_tune/Routes/app_route.dart';
 import 'package:fine_tune/Widgets/HomeWidget/card_view.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +27,7 @@ class HomeController extends GetxController {
       name: "Ramayan",
       episode: "Ep 3/20",
       image: "assets/HomeAssets/card.png",
-      action: () => Navigator.of(Get.context!)
-          .push(MaterialPageRoute(builder: (context) => PlaylistScreen())),
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: true,
     ),
     CardView(
@@ -73,28 +71,28 @@ class HomeController extends GetxController {
       name: "Divide",
       episode: "20:45 mins",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Divide",
       episode: "20:45 mins",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Divide",
       episode: "20:45 mins",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Divide",
       episode: "20:45 mins",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
   ].obs;
@@ -103,35 +101,35 @@ class HomeController extends GetxController {
       name: "Soulful Arijit",
       episode: "20:45 mins",
       image: "assets/HomeAssets/trendingCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Soulful Arijit",
       episode: "20:45 mins",
       image: "assets/HomeAssets/trendingCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Soulful Arijit",
       episode: "20:45 mins",
       image: "assets/HomeAssets/trendingCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Soulful Arijit",
       episode: "20:45 mins",
       image: "assets/HomeAssets/trendingCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Soulful Arijit",
       episode: "20:45 mins",
       image: "assets/HomeAssets/trendingCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
   ].obs;
@@ -140,35 +138,35 @@ class HomeController extends GetxController {
       name: "Divide",
       episode: "20 Episodes",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Divide",
       episode: "20 Episodes",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Divide",
       episode: "20 Episodes",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Divide",
       episode: "20 Episodes",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
     CardView(
       name: "Divide",
       episode: "20 Episodes",
       image: "assets/HomeAssets/featuredCard.png",
-      action: () => Get.find<BottomNavigationController>().homeIndex.value = 1,
+      action: () => Get.toNamed(AppRoute.playlistScreen),
       isWatched: false,
     ),
   ].obs;

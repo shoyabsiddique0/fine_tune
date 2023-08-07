@@ -88,7 +88,7 @@ class PremiumScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 20.h,
+                height: 160.h,
               )
             ],
           )

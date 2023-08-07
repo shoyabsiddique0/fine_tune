@@ -10,7 +10,7 @@ class CategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30.h,
+      // height: 30.h,
       padding: EdgeInsets.all(8.w),
       // margin: EdgeInsets.only(left: 24.w, right: 24.w),
       decoration: BoxDecoration(
@@ -21,9 +21,12 @@ class CategoryView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(
-              height: 40.w,
-              width: 40.w,
+              height: 30.h,
+              width: 30.w,
               child: SvgPicture.asset("assets/HomeAssets/category.svg")),
+          SizedBox(
+            width: 5.w,
+          ),
           Text(
             "Top Audio Books",
             style: GoogleFonts.poppins(

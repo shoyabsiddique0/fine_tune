@@ -1,4 +1,5 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-double width = ScreenUtil.defaultSize.width.w;
-double height = ScreenUtil.defaultSize.height.h;
+double width = MediaQuery.of(Get.context!).size.width;
+double height = MediaQuery.of(Get.context!).size.height;

@@ -1,5 +1,5 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
-import 'package:fine_tune/Pages/CustomNavigator/custom_navigation.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Widgets/PlayerWidgets/mini_player.dart';
 import 'package:flutter/material.dart';
@@ -19,23 +19,22 @@ class BottomNavigationScreen extends StatelessWidget {
         //   backgroundColor: const Color(0xff1b1c1c),
         //   extendBody: true,
         // bottomNavigationBar:
-        Obx(() => Theme(
+        Obx(() => Visibility(
+            visible: bottomNavigationController.displayNav.value,
+            child: Theme(
               data: ThemeData(canvasColor: const Color(0xff1b1c1c)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  MiniPlayer(),
+                  BounceInUp(child: MiniPlayer()),
                   GestureDetector(
-                    onTap: () =>
-                        bottomNavigationController.pageIndex.value = 2,
+                    onTap: () => bottomNavigationController.pageIndex.value = 2,
                     child: Container(
                       height: 25.h,
                       padding: EdgeInsets.only(left: 24.w, right: 24.w),
                       decoration: const BoxDecoration(
-                          gradient: LinearGradient(colors: [
-                        Color(0xff007AEA),
-                        Color(0xff7A53E8)
-                      ])),
+                          gradient: LinearGradient(
+                              colors: [Color(0xff007AEA), Color(0xff7A53E8)])),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -44,13 +43,13 @@ class BottomNavigationScreen extends StatelessWidget {
                             style: GoogleFonts.poppins(
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w500,
+                                decoration: TextDecoration.none,
                                 color: whiteColor.withOpacity(0.8)),
                           ),
                           SizedBox(
                             width: 100.w,
                             child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SvgPicture.asset(
                                   "assets/NavBarAssets/premium.svg",
@@ -60,6 +59,7 @@ class BottomNavigationScreen extends StatelessWidget {
                                   "Upgrade",
                                   style: GoogleFonts.poppins(
                                       fontSize: 11.sp,
+                                      decoration: TextDecoration.none,
                                       fontWeight: FontWeight.w600,
                                       color: whiteColor),
                                 ),
@@ -147,7 +147,7 @@ class BottomNavigationScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ));
+            )));
     //   body: Obx(() => bottomNavigationController
     //       .pages[bottomNavigationController.pageIndex.value]),
     // );

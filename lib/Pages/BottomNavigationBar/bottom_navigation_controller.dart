@@ -39,7 +39,7 @@ class BottomNavigationController extends GetxController {
   ];
   var displayNav = false.obs;
   changePage(index) {
-    Get.offAllNamed(_mainPageRoutes[index]);
+    Get.offAndToNamed(_mainPageRoutes[index]);
     setSelectedIndex = index;
   }
 }

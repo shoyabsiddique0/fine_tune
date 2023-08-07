@@ -77,6 +77,9 @@ class MyListScreen extends StatelessWidget {
             ),
             Column(
               children: controller.likedList,
+            ),
+            SizedBox(
+              height: 160.h,
             )
           ],
         ),

@@ -88,7 +88,7 @@ class AppPage {
         name: AppRoute.playerScreen,
         page: () => const PlayerScreen(),
         binding: PlayerBinding(),
-        transition: Transition.rightToLeft),
+        transition: Transition.downToUp),
     GetPage(
         name: AppRoute.recentlyPlayedScreen,
         page: () => const RecentlyPlayedScreen(),

@@ -94,7 +94,8 @@ class HomeScreen extends StatelessWidget {
                         child: CarouselSlider(
                             items: controller.carousel,
                             options: CarouselOptions(
-                                viewportFraction: width / (height / 0.55),
+                                viewportFraction: 0.4,
+                                aspectRatio: 1 / 1,
                                 disableCenter: true,
                                 enlargeFactor: width / (height / 0.25),
                                 // height: 120.h,
@@ -106,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                                   controller.current.value = index;
                                 },
                                 // aspectRatio: 0.5.w,
-                                enableInfiniteScroll: false,
+                                enableInfiniteScroll: true,
                                 padEnds: false,
                                 enlargeCenterPage: true)),
                       ),
@@ -151,7 +152,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Container(
-              height: 160.h,
+              height: 140.h,
               margin: EdgeInsets.only(left: 24.w, right: 24.w),
               child: GridView(
                 physics: const NeverScrollableScrollPhysics(),
@@ -159,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 24.w,
                     mainAxisSpacing: 24.w,
-                    childAspectRatio: width / (height / 4.8)),
+                    childAspectRatio: 3 / 1),
                 children: const [
                   CategoryView(),
                   CategoryView(),
@@ -229,7 +230,7 @@ class HomeScreen extends StatelessWidget {
                       itemCount: controller.topList.length),
                 )),
             SizedBox(
-              height: 55.h,
+              height: 115.h,
             ),
           ],
         ),

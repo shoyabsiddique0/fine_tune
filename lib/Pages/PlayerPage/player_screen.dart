@@ -19,7 +19,7 @@ class PlayerScreen extends StatelessWidget {
         elevation: 0,
         leading: TextButton(
           child: SvgPicture.asset("assets/HomeAssets/prev.svg"),
-          onPressed: () {},
+          onPressed: () => Get.back(),
         ),
         title: Text(
           "Ramayana",

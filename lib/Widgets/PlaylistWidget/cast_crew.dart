@@ -13,6 +13,7 @@ class CastCrew extends StatelessWidget {
   Widget build(BuildContext context) {
     PlaylistController controller = Get.find<PlaylistController>();
     return GridView.builder(
+      physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 10.w,

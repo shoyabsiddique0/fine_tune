@@ -3,9 +3,7 @@ import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fine_tune/Model/PlayerModel/position_data.dart';
 import 'package:fine_tune/Pages/PlayerPage/player_controller.dart';
-import 'package:fine_tune/Pages/PlayerPage/player_screen.dart';
 import 'package:fine_tune/Routes/app_route.dart';
-import 'package:fine_tune/Widgets/PlayerWidgets/player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -107,6 +105,7 @@ class MiniPlayer extends StatelessWidget {
                                 text: data.title,
                                 style: TextStyle(
                                     color: Colors.white,
+                                    decoration: TextDecoration.none,
                                     fontFamily: "Poppins",
                                     fontSize: 12.w,
                                     fontWeight: FontWeight.w800),
@@ -124,6 +123,7 @@ class MiniPlayer extends StatelessWidget {
                                 text: data.artist!,
                                 style: TextStyle(
                                   color: Colors.white70,
+                                  decoration: TextDecoration.none,
                                   fontFamily: "Poppins",
                                   fontSize: 10.w,
                                 ),

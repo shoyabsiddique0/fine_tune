@@ -2,16 +2,14 @@ import 'package:fine_tune/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:main_ott/Theme/colors.dart';
 
-// ignore: must_be_immutable
 class CardView extends StatelessWidget {
   final String name;
   final String episode;
   final String image;
-  void Function() action;
+  final void Function() action;
   final bool isWatched;
-  CardView(
+  const CardView(
       {super.key,
       required this.name,
       required this.episode,
@@ -42,9 +40,9 @@ class CardView extends StatelessWidget {
                     value: 0.2,
                     backgroundColor: Colors.grey.withOpacity(0.5),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
             SizedBox(
-              height: 10.h,
+              height: 8.h,
             ),
             Text(name,
                 style: GoogleFonts.poppins(
