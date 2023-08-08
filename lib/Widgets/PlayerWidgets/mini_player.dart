@@ -30,7 +30,17 @@ class MiniPlayer extends StatelessWidget {
         Obx(
           () => GestureDetector(
             onVerticalDragStart: (details) {
-              Get.toNamed(AppRoute.playerScreen);
+              controller.startPos.value = details.globalPosition;
+            },
+            onVerticalDragUpdate: (details) {
+              controller.endPos.value = details.globalPosition;
+            },
+            onVerticalDragEnd: (details) {
+              if (controller.startPos.value.distance -
+                      controller.endPos.value.distance >
+                  Offset.zero.distance) {
+                Get.toNamed(AppRoute.playerScreen);
+              }
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.w),
@@ -73,10 +83,10 @@ class MiniPlayer extends StatelessWidget {
                           tag: "image",
                           transitionOnUserGestures: true,
                           child: SizedBox(
-                            height: 50.w,
+                            height: 50.h,
                             width: 50.w,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10.w),
+                              borderRadius: BorderRadius.circular(10.r),
                               child: CachedNetworkImage(
                                 imageUrl: data.artUri.toString(),
                                 placeholder: (context, url) => const Center(
@@ -95,7 +105,7 @@ class MiniPlayer extends StatelessWidget {
                           children: [
                             SizedBox(
                               width: 110.w,
-                              height: 25.w,
+                              height: 25.h,
                               child: Marquee(
                                 scrollAxis: Axis.horizontal,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,12 +117,12 @@ class MiniPlayer extends StatelessWidget {
                                     color: Colors.white,
                                     decoration: TextDecoration.none,
                                     fontFamily: "Poppins",
-                                    fontSize: 12.w,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w800),
                               ),
                             ),
                             SizedBox(
-                              height: 25.w,
+                              height: 25.h,
                               width: 110.w,
                               child: Marquee(
                                 scrollAxis: Axis.horizontal,
@@ -125,69 +135,83 @@ class MiniPlayer extends StatelessWidget {
                                   color: Colors.white70,
                                   decoration: TextDecoration.none,
                                   fontFamily: "Poppins",
-                                  fontSize: 10.w,
+                                  fontSize: 10.sp,
                                 ),
                               ),
                             )
                           ],
                         ),
-                        SizedBox(
-                          height: 50.w,
-                          child: Row(
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  if (controller.audioPlayer.value.loopMode ==
-                                      LoopMode.all) {
-                                    controller.loopMode.value =
-                                        !controller.loopMode.value;
-                                    controller.audioPlayer.value
-                                        .setLoopMode(LoopMode.one);
-                                  } else {
-                                    controller.loopMode.value =
-                                        !controller.loopMode.value;
-                                    controller.audioPlayer.value
-                                        .setLoopMode(LoopMode.all);
-                                  }
-                                },
-                                child: Obx(() => SvgPicture.asset(
-                                      controller.loopMode.value
-                                          ? "assets/HomeAssets/repeat.svg"
-                                          : "assets/HomeAssets/loopOne.svg",
-                                      color: Colors.red,
-                                    )),
+                        Row(
+                          children: [
+                            SizedBox(
+                              height: 50.h,
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      if (controller
+                                              .audioPlayer.value.loopMode ==
+                                          LoopMode.all) {
+                                        controller.loopMode.value =
+                                            !controller.loopMode.value;
+                                        controller.audioPlayer.value
+                                            .setLoopMode(LoopMode.one);
+                                      } else {
+                                        controller.loopMode.value =
+                                            !controller.loopMode.value;
+                                        controller.audioPlayer.value
+                                            .setLoopMode(LoopMode.all);
+                                      }
+                                    },
+                                    child: Obx(() => SvgPicture.asset(
+                                          controller.loopMode.value
+                                              ? "assets/HomeAssets/repeat.svg"
+                                              : "assets/HomeAssets/loopOne.svg",
+                                          color: Colors.red,
+                                        )),
+                                  ),
+                                  SvgPicture.asset(
+                                      "assets/HomeAssets/heart.svg"),
+                                  SizedBox(
+                                    height: 40.h,
+                                    child: StreamBuilder<PlayerState>(
+                                        stream: controller.audioPlayer.value
+                                            .playerStateStream,
+                                        builder: (context, snapshot) {
+                                          final playerState = snapshot.data;
+                                          final processingState =
+                                              playerState?.processingState;
+                                          final playing = playerState?.playing;
+                                          if (!(playing ?? false)) {
+                                            return InkWell(
+                                                onPressed: () {
+                                                  controller.audioPlayer.value
+                                                      .play();
+                                                },
+                                                child: SvgPicture.asset(
+                                                  "assets/HomeAssets/play.svg",
+                                                  fit: BoxFit.scaleDown,
+                                                ));
+                                          } else if (processingState !=
+                                              ProcessingState.completed) {
+                                            return TextButton(
+                                                onPressed: () {
+                                                  controller.audioPlayer.value
+                                                      .pause();
+                                                },
+                                                child: SvgPicture.asset(
+                                                    "assets/HomeAssets/pause.svg",
+                                                    fit: BoxFit.scaleDown));
+                                          }
+                                          return SvgPicture.asset(
+                                              "assets/HomeAssets/play.svg",
+                                              fit: BoxFit.scaleDown);
+                                        }),
+                                  ),
+                                ],
                               ),
-                              SvgPicture.asset("assets/HomeAssets/heart.svg"),
-                              StreamBuilder<PlayerState>(
-                                  stream: controller
-                                      .audioPlayer.value.playerStateStream,
-                                  builder: (context, snapshot) {
-                                    final playerState = snapshot.data;
-                                    final processingState =
-                                        playerState?.processingState;
-                                    final playing = playerState?.playing;
-                                    if (!(playing ?? false)) {
-                                      return TextButton(
-                                          onPressed: () {
-                                            controller.audioPlayer.value.play();
-                                          },
-                                          child: SvgPicture.asset(
-                                              "assets/HomeAssets/play.svg"));
-                                    } else if (processingState !=
-                                        ProcessingState.completed) {
-                                      return TextButton(
-                                          onPressed: () {
-                                            controller.audioPlayer.value
-                                                .pause();
-                                          },
-                                          child: SvgPicture.asset(
-                                              "assets/HomeAssets/pause.svg"));
-                                    }
-                                    return SvgPicture.asset(
-                                        "assets/HomeAssets/play.svg");
-                                  }),
-                            ],
-                          ),
+                            ),
+                          ],
                         )
                       ]);
                     }),

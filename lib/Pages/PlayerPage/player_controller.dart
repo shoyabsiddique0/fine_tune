@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:audio_service/audio_service.dart';
 import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
@@ -29,49 +30,66 @@ class PlayerController extends GetxController {
   var metaData = const MediaItem(id: "", title: "").obs;
   final currIndex = 0.obs;
   final currDur = Duration.zero.obs;
-  final subtitle = SubtitleController(
-      provider: SubtitleProvider.fromNetwork(Uri.parse(
-          "https://ott-2.s3.eu-north-1.amazonaws.com/Taylor-Swift-Love-Story.srt")));
+  StreamController streamController = StreamController.broadcast();
+  ScrollController scrollController = ScrollController();
+  var index = 0.obs;
+  var scrollPos = 0.0.obs;
+
   Rx<Subtitle?>? currentSubtitle;
   final playlist = ConcatenatingAudioSource(children: [
     AudioSource.uri(Uri.parse("https://pagalworldi.com/files/download/id/3025"),
         tag: MediaItem(
             id: "1",
             title: "Love Story",
+            extras: {
+              "lyrics":
+                  "https://ott-2.s3.eu-north-1.amazonaws.com/Taylor-Swift-Love-Story.srt"
+            },
             artist: "Taylor Swift",
             artUri: Uri.parse(
                 "https://upload.wikimedia.org/wikipedia/en/0/01/Taylor_Swift_-_Love_Story.png"),
             duration: const Duration(minutes: 4, seconds: 45))),
     AudioSource.uri(
         Uri.parse(
-            "https://pagalsong.in/uploads/systemuploads/mp3/Hum Dono (1961)/Abhi Na Jao Chhod Kar 128 Kbps.mp3"),
+            "https://geckofeeds.com/wp-content/uploads/2022/07/Ed_Sheeran_-_Perfect.mp3"),
         tag: MediaItem(
             id: "2",
-            title: "Abhi Na Jao Chhod Kar",
-            artist: "Asha Bhosle, Mohammed Rafi",
+            title: "Perfect",
+            extras: {
+              "lyrics":
+                  "https://ott-2.s3.eu-north-1.amazonaws.com/Ed-Sheeran-Perfect-(Official-Audio).srt"
+            },
+            artist: "Ed Sheeran",
             artUri: Uri.parse(
-                "https://bajikaraoke.com/image/cache/catalog/karaoke/karaoke_2020/rafi/abhi_na_jao_chhod_kar-500x500.png"),
+                "https://upload.wikimedia.org/wikipedia/en/8/80/Ed_Sheeran_Perfect_Single_cover.jpg"),
             duration: const Duration(minutes: 4, seconds: 45))),
     AudioSource.uri(
         Uri.parse(
-            "https://pagalsong.in/uploads/systemuploads/mp3/Airlift/Soch Na Sake.mp3"),
+            "https://geckofeeds.com/wp-content/uploads/2022/09/Charlie-Puth-Attention.mp3?_=1"),
         tag: MediaItem(
           id: "3",
-          title: "Soch na sake",
-          artist: "Arijit Singh",
+          title: "Attention",
+          artist: "Charlie Puth",
+          extras: {
+            "lyrics":
+                "https://ott-2.s3.eu-north-1.amazonaws.com/Charlie-Puth-Attention-(Official-Video).srt"
+          },
           artUri: Uri.parse(
-              "https://i.scdn.co/image/ab67616d0000b2736b047c1401c8c18a54e4377d"),
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Attention_%28Charlie_Puth_song%29_single_cover.svg/1200px-Attention_%28Charlie_Puth_song%29_single_cover.svg.png"),
           duration: const Duration(minutes: 4, seconds: 45),
         )),
     AudioSource.uri(
-        Uri.parse(
-            "https://pagalfree.com/musics/128-Pal - Monsoon Shootout 128 Kbps.mp3"),
+        Uri.parse("https://www.pagalwrold.com/files/download/id/3049"),
         tag: MediaItem(
+            extras: {
+              "lyrics":
+                  "https://ott-2.s3.eu-north-1.amazonaws.com/LSD-Genius-ft.-Sia%2C-Diplo%2C-Labrinth.srt"
+            },
             id: "4",
-            title: "Pal - Monsoon Shootout",
-            artist: "Arijit Singh",
+            title: "Genius",
+            artist: "Sia, Diplo, Labrinth",
             artUri: Uri.parse(
-                "https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/08/04/59/08045948-152f-725f-d980-b43b1dd29e42/191773930202.jpg/600x600bf-60.jpg"),
+                "https://www.pagalwrold.com/siteuploads/thumb/sft7/3049_4.jpg"),
             duration: const Duration(minutes: 4, seconds: 45))),
   ]);
   @override
@@ -94,11 +112,12 @@ class PlayerController extends GetxController {
         .setAudioSource(playlist, initialIndex: 0, preload: true);
     audioPlayer.value.positionStream.listen((event) {
       print("----> Inside");
-      if (caption.isNotEmpty) {
-        currentSubtitle =
-            getSubtitleForCurrentPosition(audioPlayer.value.position, caption)
-                .obs;
-        print("---->${currentSubtitle?.value?.data}");
+      if (caption.isNotEmpty &&
+          getSubtitleForCurrentPosition(audioPlayer.value.position, caption)
+                  ?.data !=
+              null) {
+        streamController.add(
+            getSubtitleForCurrentPosition(audioPlayer.value.position, caption));
       }
     });
   }

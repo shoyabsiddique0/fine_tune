@@ -75,6 +75,7 @@ class _PlayerState extends State<Player> {
                   }
                   final metadata = state?.currentSource!.tag as MediaItem;
                   metaData = metadata;
+                  updateData(metadata);
                   return Container(
                     // alignment: Alignment.center,
                     margin: EdgeInsets.only(left: 24.w, right: 24.w),
@@ -126,14 +127,7 @@ class _PlayerState extends State<Player> {
                                   fontWeight: FontWeight.w800),
                             ),
                             InkWell(
-                                onTap: () async {
-                                  List<Subtitle> srtFile =
-                                      await controller.getCloseCaptionFile(
-                                          "https://ott-2.s3.eu-north-1.amazonaws.com/Taylor-Swift-Love-Story.srt");
-                                  const AsyncSnapshot.waiting();
-                                  controller.caption.value = srtFile;
-                                  print("--->$srtFile");
-                                },
+                                onTap: () {},
                                 child: SvgPicture.asset(
                                     "assets/HomeAssets/heart.svg"))
                           ],
@@ -548,8 +542,10 @@ class _PlayerState extends State<Player> {
       borderRadius: BorderRadius.circular(0),
       child: Container(
         width: double.infinity,
+        // height: 400.h,
         child: CachedNetworkImage(
           imageUrl: metadata.artUri.toString(),
+          fit: BoxFit.fill,
           placeholder: (context, url) => const Center(
             child: CircularProgressIndicator(
               value: 0.3,
@@ -565,30 +561,66 @@ class _PlayerState extends State<Player> {
 
   Widget _buildRear() {
     return Container(
-        height: 260.h,
-        width: 300.w,
-        padding:
-            EdgeInsets.only(left: 25.w, right: 25.w, top: 10.h, bottom: 10.h),
-        child: Obx(
-          () => ListView.builder(
-              itemCount: controller.caption.length,
-              itemBuilder: (context, index) {
-                print("###${controller.currentSubtitle?.value?.data}");
-                print('@@@@@@@@@@@${controller.caption[index].data}');
-                return Obx(
-                  () => Text(
-                    controller.caption[index].data,
-                    style: GoogleFonts.poppins(
-                        color: Colors.black,
-                        fontSize: 10.sp,
-                        fontWeight:
-                            controller.currentSubtitle?.value?.index == index
-                                ? FontWeight.w700
-                                : FontWeight.w400),
-                    textAlign: TextAlign.center,
-                  ),
-                );
-              }),
-        ));
+      height: 260.h,
+      width: 300.w,
+      padding:
+          EdgeInsets.only(left: 25.w, right: 25.w, top: 10.h, bottom: 10.h),
+      child: StreamBuilder(
+          stream: controller.streamController.stream,
+          builder: (context, snapshot) {
+            // snapshot.hasData ? controller.scrollPos.value += 0.0001 : null;
+            return Obx(
+              () => ListView(
+                  controller: controller.scrollController,
+                  children: controller.caption.map((element) {
+                    if (snapshot.hasData) {
+                      if (snapshot.data.index == controller.index.value) {
+                        null;
+                      } else {
+                        print("------>Comes here");
+                        controller.scrollPos.value += 1;
+                        controller.index.value += 1;
+                        controller.scrollController.animateTo(
+                            controller.scrollController.position.pixels + 1,
+                            // );
+                            duration: Duration(seconds: 1),
+                            curve: Curves.bounceIn);
+                      }
+                    }
+                    return Text(
+                      element.data,
+                      style: GoogleFonts.poppins(
+                          color: snapshot.hasData
+                              ? snapshot.data.index ==
+                                      controller.caption.indexOf(element)
+                                  ? Colors.black
+                                  : Colors.black.withOpacity(0.25)
+                              : Colors.black.withOpacity(0.25),
+                          fontSize: snapshot.hasData
+                              ? snapshot.data.index ==
+                                      controller.caption.indexOf(element)
+                                  ? 14.sp
+                                  : 10.sp
+                              : 10.sp,
+                          fontWeight: snapshot.hasData
+                              ? snapshot.data.index ==
+                                      controller.caption.indexOf(element)
+                                  ? FontWeight.w700
+                                  : FontWeight.w400
+                              : FontWeight.w400),
+                      textAlign: TextAlign.center,
+                    );
+                  }).toList()),
+            );
+          }),
+    );
+  }
+
+  void updateData(metadata) async {
+    List<Subtitle> srtFile = await Get.find<PlayerController>()
+        .getCloseCaptionFile(metadata.extras?["lyrics"]);
+    const AsyncSnapshot.waiting();
+    Get.find<PlayerController>().caption.value = srtFile;
+    print(srtFile);
   }
 }
