@@ -33,6 +33,7 @@ class PlayerController extends GetxController {
   StreamController streamController = StreamController.broadcast();
   ScrollController scrollController = ScrollController();
   var index = 0.obs;
+  var streamIndex = 0.obs;
   var scrollPos = 0.0.obs;
 
   Rx<Subtitle?>? currentSubtitle;

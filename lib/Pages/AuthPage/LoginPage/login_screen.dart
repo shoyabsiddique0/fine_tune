@@ -6,6 +6,7 @@ import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Widgets/AuthWidget/custom_text_input.dart';
 import 'package:fine_tune/Widgets/AuthWidget/cutom_button.dart';
 import 'package:fine_tune/Widgets/background.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,6 +21,7 @@ class LoginScreen extends StatelessWidget {
     LoginController controller = Get.find<LoginController>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      // extendBody: true,
       body: Stack(
         children: [
           // Container(
@@ -161,6 +163,9 @@ class LoginScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500),
                       children: [
                         TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap =
+                                () => Get.toNamed(AppRoute.privacyPolicyScreen),
                           text: "Privacy Policy",
                           style: GoogleFonts.poppins(
                               color: whiteColor,
@@ -176,6 +181,8 @@ class LoginScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w500)),
                         TextSpan(
                           text: "T&C",
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Get.toNamed(AppRoute.tncScreen),
                           style: GoogleFonts.poppins(
                               color: whiteColor,
                               fontSize: 12.sp,

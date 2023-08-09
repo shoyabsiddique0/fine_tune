@@ -51,6 +51,7 @@ dependencies:
   rxdart:
   marquee:
   animate_do: ^3.0.2
+  scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:
   flutter_test:

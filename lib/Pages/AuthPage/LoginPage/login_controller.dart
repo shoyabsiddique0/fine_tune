@@ -13,6 +13,7 @@ class LoginController extends GetxController {
     Get.find<BottomNavigationController>().displayNav.value = false;
     super.onInit();
   }
+
   var phoneController = TextEditingController().obs;
   var valMob = "".obs;
   void validateMobile(String? value) {
@@ -25,8 +26,10 @@ class LoginController extends GetxController {
       valMob.value = "";
     }
   }
+  
   @override
   void onReady() {
+    Get.find<BottomNavigationController>().displayNav.value = false;
     Get.bottomSheet(
         Container(
           padding: EdgeInsets.only(left: 24.w, right: 24.w),
@@ -101,5 +104,4 @@ class LoginController extends GetxController {
         barrierColor: whiteColor.withOpacity(0.1));
     super.onReady();
   }
-  
 }

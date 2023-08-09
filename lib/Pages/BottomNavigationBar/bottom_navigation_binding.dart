@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class BottomNavigationBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => BottomNavigationController());
-    Get.lazyPut(() => PlayerController());
+    Get.lazyPut(() => BottomNavigationController(), fenix: true);
+    Get.lazyPut(() => PlayerController(), fenix: true);
   }
 }

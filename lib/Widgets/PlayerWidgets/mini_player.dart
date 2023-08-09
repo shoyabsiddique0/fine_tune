@@ -78,142 +78,157 @@ class MiniPlayer extends StatelessWidget {
                       controller.currIndex.value = int.parse(data.id);
                       controller.currDur.value =
                           controller.audioPlayer.value.position;
-                      return Row(children: [
-                        Hero(
-                          tag: "image",
-                          transitionOnUserGestures: true,
-                          child: SizedBox(
-                            height: 50.h,
-                            width: 50.w,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10.r),
-                              child: CachedNetworkImage(
-                                imageUrl: data.artUri.toString(),
-                                placeholder: (context, url) => const Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(
-                              width: 110.w,
-                              height: 25.h,
-                              child: Marquee(
-                                scrollAxis: Axis.horizontal,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                velocity: 50.0,
-                                blankSpace: 10.w,
-                                pauseAfterRound: const Duration(seconds: 2),
-                                text: data.title,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    decoration: TextDecoration.none,
-                                    fontFamily: "Poppins",
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w800),
-                              ),
+                            Row(
+                              children: [
+                                Hero(
+                                  tag: "image",
+                                  transitionOnUserGestures: true,
+                                  child: SizedBox(
+                                    height: 50.h,
+                                    width: 50.w,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.r),
+                                      child: CachedNetworkImage(
+                                        imageUrl: data.artUri.toString(),
+                                        placeholder: (context, url) =>
+                                            const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 110.w,
+                                      height: 25.h,
+                                      child: Marquee(
+                                        scrollAxis: Axis.horizontal,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        velocity: 50.0,
+                                        blankSpace: 10.w,
+                                        pauseAfterRound:
+                                            const Duration(seconds: 2),
+                                        text: data.title,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            decoration: TextDecoration.none,
+                                            fontFamily: "Poppins",
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 25.h,
+                                      width: 110.w,
+                                      child: Marquee(
+                                        scrollAxis: Axis.horizontal,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        velocity: 50.0,
+                                        blankSpace: 10.w,
+                                        pauseAfterRound:
+                                            const Duration(seconds: 2),
+                                        text: data.artist!,
+                                        style: TextStyle(
+                                          color: Colors.white70,
+                                          decoration: TextDecoration.none,
+                                          fontFamily: "Poppins",
+                                          fontSize: 10.sp,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
                             ),
                             SizedBox(
-                              height: 25.h,
-                              width: 110.w,
-                              child: Marquee(
-                                scrollAxis: Axis.horizontal,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                velocity: 50.0,
-                                blankSpace: 10.w,
-                                pauseAfterRound: const Duration(seconds: 2),
-                                text: data.artist!,
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  decoration: TextDecoration.none,
-                                  fontFamily: "Poppins",
-                                  fontSize: 10.sp,
+                              width: 10.w,
+                            ),
+                            Expanded(
+                              child: SizedBox(
+                                height: 50.h,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        if (controller
+                                                .audioPlayer.value.loopMode ==
+                                            LoopMode.all) {
+                                          controller.loopMode.value =
+                                              !controller.loopMode.value;
+                                          controller.audioPlayer.value
+                                              .setLoopMode(LoopMode.one);
+                                        } else {
+                                          controller.loopMode.value =
+                                              !controller.loopMode.value;
+                                          controller.audioPlayer.value
+                                              .setLoopMode(LoopMode.all);
+                                        }
+                                      },
+                                      child: Obx(() => SvgPicture.asset(
+                                            controller.loopMode.value
+                                                ? "assets/HomeAssets/repeat.svg"
+                                                : "assets/HomeAssets/loopOne.svg",
+                                            color: Colors.red,
+                                          )),
+                                    ),
+                                    SvgPicture.asset(
+                                        "assets/HomeAssets/heart.svg"),
+                                    SizedBox(
+                                      height: 40.h,
+                                      child: StreamBuilder<PlayerState>(
+                                          stream: controller.audioPlayer.value
+                                              .playerStateStream,
+                                          builder: (context, snapshot) {
+                                            final playerState = snapshot.data;
+                                            final processingState =
+                                                playerState?.processingState;
+                                            final playing =
+                                                playerState?.playing;
+                                            if (!(playing ?? false)) {
+                                              return InkWell(
+                                                  onTap: () {
+                                                    controller.audioPlayer.value
+                                                        .play();
+                                                  },
+                                                  child: SvgPicture.asset(
+                                                    "assets/HomeAssets/play.svg",
+                                                    fit: BoxFit.scaleDown,
+                                                  ));
+                                            } else if (processingState !=
+                                                ProcessingState.completed) {
+                                              return InkWell(
+                                                  onTap: () {
+                                                    controller.audioPlayer.value
+                                                        .pause();
+                                                  },
+                                                  child: SvgPicture.asset(
+                                                      "assets/HomeAssets/pause.svg",
+                                                      fit: BoxFit.scaleDown));
+                                            }
+                                            return SvgPicture.asset(
+                                                "assets/HomeAssets/play.svg",
+                                                fit: BoxFit.scaleDown);
+                                          }),
+                                    ),
+                                  ],
                                 ),
                               ),
                             )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              height: 50.h,
-                              child: Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      if (controller
-                                              .audioPlayer.value.loopMode ==
-                                          LoopMode.all) {
-                                        controller.loopMode.value =
-                                            !controller.loopMode.value;
-                                        controller.audioPlayer.value
-                                            .setLoopMode(LoopMode.one);
-                                      } else {
-                                        controller.loopMode.value =
-                                            !controller.loopMode.value;
-                                        controller.audioPlayer.value
-                                            .setLoopMode(LoopMode.all);
-                                      }
-                                    },
-                                    child: Obx(() => SvgPicture.asset(
-                                          controller.loopMode.value
-                                              ? "assets/HomeAssets/repeat.svg"
-                                              : "assets/HomeAssets/loopOne.svg",
-                                          color: Colors.red,
-                                        )),
-                                  ),
-                                  SvgPicture.asset(
-                                      "assets/HomeAssets/heart.svg"),
-                                  SizedBox(
-                                    height: 40.h,
-                                    child: StreamBuilder<PlayerState>(
-                                        stream: controller.audioPlayer.value
-                                            .playerStateStream,
-                                        builder: (context, snapshot) {
-                                          final playerState = snapshot.data;
-                                          final processingState =
-                                              playerState?.processingState;
-                                          final playing = playerState?.playing;
-                                          if (!(playing ?? false)) {
-                                            return InkWell(
-                                                onPressed: () {
-                                                  controller.audioPlayer.value
-                                                      .play();
-                                                },
-                                                child: SvgPicture.asset(
-                                                  "assets/HomeAssets/play.svg",
-                                                  fit: BoxFit.scaleDown,
-                                                ));
-                                          } else if (processingState !=
-                                              ProcessingState.completed) {
-                                            return TextButton(
-                                                onPressed: () {
-                                                  controller.audioPlayer.value
-                                                      .pause();
-                                                },
-                                                child: SvgPicture.asset(
-                                                    "assets/HomeAssets/pause.svg",
-                                                    fit: BoxFit.scaleDown));
-                                          }
-                                          return SvgPicture.asset(
-                                              "assets/HomeAssets/play.svg",
-                                              fit: BoxFit.scaleDown);
-                                        }),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
-                      ]);
+                          ]);
                     }),
               ),
             ),

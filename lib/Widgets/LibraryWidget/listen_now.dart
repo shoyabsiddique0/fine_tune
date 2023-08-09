@@ -35,6 +35,14 @@ class ListenNow extends StatelessWidget {
                   },
                   itemCount: controller.recentList.length),
             )),
+        Padding(
+          padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
+          child: Divider(
+            color: Color(0xff272626),
+            thickness: 3.h,
+            height: 3.h,
+          ),
+        ),
         Header(
             title: "Your Top Artist",
             child: SizedBox(
@@ -69,6 +77,14 @@ class ListenNow extends StatelessWidget {
                   },
                   itemCount: controller.featuredList.length),
             )),
+        Padding(
+          padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
+          child: Divider(
+            color: Color(0xff272626),
+            thickness: 3.h,
+            height: 3.h,
+          ),
+        ),
         Header(
             title: "Featured Albums",
             child: SizedBox(
@@ -84,6 +100,14 @@ class ListenNow extends StatelessWidget {
                   },
                   itemCount: controller.featuredList.length),
             )),
+        Padding(
+          padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
+          child: Divider(
+            color: Color(0xff272626),
+            thickness: 3.h,
+            height: 3.h,
+          ),
+        ),
         Header(
             title: "Podcast",
             child: SizedBox(
@@ -99,6 +123,14 @@ class ListenNow extends StatelessWidget {
                   },
                   itemCount: controller.recentList.length),
             )),
+        Padding(
+          padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
+          child: Divider(
+            color: Color(0xff272626),
+            thickness: 3.h,
+            height: 3.h,
+          ),
+        ),
         SizedBox(
           height: 45.h,
         )

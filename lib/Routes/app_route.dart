@@ -12,4 +12,7 @@ class AppRoute {
   static const String playlistScreen = "/playlistScreen";
   static const String playerScreen = "/playerScreen";
   static const String recentlyPlayedScreen = "/recentlyPlayedScreen";
+  static const String aboutUsScreen = "/aboutUsScreen";
+  static const String privacyPolicyScreen = "/privacyPolicyScreen";
+  static const String tncScreen = "/tnCScreen";
 }

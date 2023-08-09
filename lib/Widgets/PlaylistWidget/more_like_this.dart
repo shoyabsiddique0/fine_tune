@@ -12,7 +12,7 @@ class MoreLikeThis extends StatelessWidget {
   Widget build(BuildContext context) {
     PlaylistController controller = Get.find<PlaylistController>();
     return Container(
-      margin: EdgeInsets.only(left: 24.w, right: 24.w),
+      margin: EdgeInsets.only(left: 24.w, right: 24.w, top: 20.h),
       child: GridView.builder(
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

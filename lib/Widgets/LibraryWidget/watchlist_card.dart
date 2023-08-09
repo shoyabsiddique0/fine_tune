@@ -1,3 +1,4 @@
+import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,13 +16,13 @@ class WatchlistCard extends StatelessWidget {
       required this.imageLink,
       required this.duration,
       required this.left,
-        this.onTap,
+      this.onTap,
       required this.isDownloads});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap ?? (){},
+      onTap: onTap ?? () {},
       child: Container(
         margin: EdgeInsets.only(left: 24.w, right: 24.w),
         padding: EdgeInsets.only(bottom: 20.w),
@@ -69,82 +70,123 @@ class WatchlistCard extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.bottomSheet(Container(
-                              height: 140.h,
-                              padding: EdgeInsets.only(
-                                  left: 24.w, right: 24.w, top: 20.w),
-                              color: const Color(0xff1b1c1c),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                            Get.find<BottomNavigationController>()
+                                .displayNav
+                                .value = false;
+                            Get.bottomSheet(
+                                Container(
+                                  height: isDownloads ? 160.h : 140.h,
+                                  padding: EdgeInsets.only(
+                                      left: 24.w, right: 24.w, top: 20.w),
+                                  color: const Color(0xff1b1c1c),
+                                  child: Column(
                                     children: [
-                                      Text(
-                                        title,
-                                        style: GoogleFonts.poppins(
-                                            color: whiteColor,
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      GestureDetector(
-                                        onTap: () => Get.back(),
-                                        child: SvgPicture.asset(
-                                            "assets/HomeAssets/cross.svg"),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 23.w,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(
-                                        "assets/HomeAssets/like.svg",
-                                        width: 18.w,
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            title,
+                                            style: GoogleFonts.poppins(
+                                                color: whiteColor,
+                                                fontSize: 18.sp,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          GestureDetector(
+                                            onTap: () {
+                                              Get.find<
+                                                      BottomNavigationController>()
+                                                  .displayNav
+                                                  .value = true;
+                                              Get.back();
+                                            },
+                                            child: SvgPicture.asset(
+                                                "assets/HomeAssets/cross.svg"),
+                                          )
+                                        ],
                                       ),
                                       SizedBox(
-                                        width: 15.w,
+                                        height: 23.w,
                                       ),
-                                      Text(
-                                        "Liked",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 14.sp,
-                                            color: whiteColor,
-                                            fontWeight: FontWeight.w400),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 16.w,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(
-                                        "assets/HomeAssets/list.svg",
-                                        width: 12.w,
+                                      Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                            "assets/HomeAssets/like.svg",
+                                            width: 18.w,
+                                          ),
+                                          SizedBox(
+                                            width: 15.w,
+                                          ),
+                                          Text(
+                                            "Liked",
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 14.sp,
+                                                color: whiteColor,
+                                                fontWeight: FontWeight.w400),
+                                          )
+                                        ],
                                       ),
                                       SizedBox(
-                                        width: 15.w,
+                                        height: 16.w,
                                       ),
-                                      Text(
-                                        isDownloads
-                                            ? "Add to List"
-                                            : "Add to List",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 14.sp,
-                                            color: whiteColor,
-                                            fontWeight: FontWeight.w400),
-                                      )
+                                      Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                            "assets/HomeAssets/list.svg",
+                                            width: 12.w,
+                                          ),
+                                          SizedBox(
+                                            width: 15.w,
+                                          ),
+                                          Text(
+                                            isDownloads
+                                                ? "Add to List"
+                                                : "Add to List",
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 14.sp,
+                                                color: whiteColor,
+                                                fontWeight: FontWeight.w400),
+                                          )
+                                        ],
+                                      ),
+                                      isDownloads
+                                          ? SizedBox(
+                                              height: 16.w,
+                                            )
+                                          : SizedBox.shrink(),
+                                      isDownloads
+                                          ? Row(
+                                              children: [
+                                                SvgPicture.asset(
+                                                  "assets/HomeAssets/trash.svg",
+                                                  width: 15.w,
+                                                  fit: BoxFit.fill,
+                                                ),
+                                                SizedBox(
+                                                  width: 15.w,
+                                                ),
+                                                Text(
+                                                  "Delete From Downloads",
+                                                  style: GoogleFonts.poppins(
+                                                      fontSize: 14.sp,
+                                                      color: whiteColor,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                )
+                                              ],
+                                            )
+                                          : SizedBox.shrink(),
                                     ],
                                   ),
-                                ],
-                              ),
-                            ));
+                                ),
+                                isDismissible: false);
                           },
                           child: Container(
                             padding: EdgeInsets.only(
-                                left: 10.w, right: 10.w, top: 10.h, bottom: 10.h),
+                                left: 10.w,
+                                right: 10.w,
+                                top: 10.h,
+                                bottom: 10.h),
                             child: SizedBox(
                               height: 14.h,
                               width: 12.w,

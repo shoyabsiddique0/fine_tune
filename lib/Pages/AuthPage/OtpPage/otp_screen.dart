@@ -124,8 +124,9 @@ class OtpScreen extends StatelessWidget {
                         height: 40.h,
                         child: CustomButton(
                           title: "Verify OTP",
-                          func: () =>
-                              Get.toNamed(AppRoute.homeScreen),
+                          func: () {
+                            Get.offNamed(AppRoute.homeScreen);
+                          },
                         )),
                     SizedBox(
                       height: height * 0.04,
@@ -134,22 +135,24 @@ class OtpScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Didn't Recieve OTP?",
+                          "Didn't Recieve OTP?  ",
                           style: GoogleFonts.poppins(
                             color: whiteColor,
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        Text(
-                          "Resend",
-                          style: GoogleFonts.poppins(
-                            color: controller.start.value == 0
-                                ? primaryColor
-                                : Colors.grey,
-                            decoration: TextDecoration.underline,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
+                        Obx(
+                          () => Text(
+                            "Resend",
+                            style: GoogleFonts.poppins(
+                              color: controller.start.value == 0
+                                  ? primaryColor
+                                  : Colors.grey,
+                              decoration: TextDecoration.underline,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ],

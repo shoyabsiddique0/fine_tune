@@ -224,6 +224,11 @@ class _PlayerState extends State<Player> {
                   InkWell(
                       onTap: () {
                         controller.audioPlayer.value.seekToPrevious();
+                        controller.streamController.add(const Subtitle(
+                            data: "",
+                            start: Duration.zero,
+                            end: Duration.zero,
+                            index: 0));
                       },
                       child: SvgPicture.asset(
                         "assets/HomeAssets/back1.svg",
@@ -236,6 +241,11 @@ class _PlayerState extends State<Player> {
                   InkWell(
                       onTap: () {
                         controller.audioPlayer.value.seekToNext();
+                        controller.streamController.add(const Subtitle(
+                            data: "",
+                            start: Duration.zero,
+                            end: Duration.zero,
+                            index: 0));
                       },
                       child: SvgPicture.asset(
                         "assets/HomeAssets/forward.svg",
@@ -541,7 +551,8 @@ class _PlayerState extends State<Player> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(0),
       child: Container(
-        width: double.infinity,
+        height: 260.h,
+        width: 300.w,
         // height: 400.h,
         child: CachedNetworkImage(
           imageUrl: metadata.artUri.toString(),
@@ -569,46 +580,50 @@ class _PlayerState extends State<Player> {
           stream: controller.streamController.stream,
           builder: (context, snapshot) {
             // snapshot.hasData ? controller.scrollPos.value += 0.0001 : null;
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (snapshot.hasData) {
+                final index = snapshot.data.index;
+                final itemExtent =
+                    40.h; // Adjust this value based on your ListTile height
+                final offset = index * itemExtent;
+                controller.scrollController.animateTo(
+                  offset,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              }
+            });
             return Obx(
               () => ListView(
                   controller: controller.scrollController,
+                  itemExtent: 40.h,
+                  physics: NeverScrollableScrollPhysics(),
                   children: controller.caption.map((element) {
-                    if (snapshot.hasData) {
-                      if (snapshot.data.index == controller.index.value) {
-                        null;
-                      } else {
-                        print("------>Comes here");
-                        controller.scrollPos.value += 1;
-                        controller.index.value += 1;
-                        controller.scrollController.animateTo(
-                            controller.scrollController.position.pixels + 1,
-                            // );
-                            duration: Duration(seconds: 1),
-                            curve: Curves.bounceIn);
-                      }
-                    }
-                    return Text(
-                      element.data,
-                      style: GoogleFonts.poppins(
-                          color: snapshot.hasData
-                              ? snapshot.data.index ==
-                                      controller.caption.indexOf(element)
-                                  ? Colors.black
-                                  : Colors.black.withOpacity(0.25)
-                              : Colors.black.withOpacity(0.25),
-                          fontSize: snapshot.hasData
-                              ? snapshot.data.index ==
-                                      controller.caption.indexOf(element)
-                                  ? 14.sp
-                                  : 10.sp
-                              : 10.sp,
-                          fontWeight: snapshot.hasData
-                              ? snapshot.data.index ==
-                                      controller.caption.indexOf(element)
-                                  ? FontWeight.w700
-                                  : FontWeight.w400
-                              : FontWeight.w400),
-                      textAlign: TextAlign.center,
+                    // print("#${scroll}");
+                    return ListTile(
+                      title: Text(
+                        element.data,
+                        style: GoogleFonts.poppins(
+                            color: snapshot.hasData
+                                ? snapshot.data.index ==
+                                        controller.caption.indexOf(element)
+                                    ? Colors.black
+                                    : Colors.black.withOpacity(0.25)
+                                : Colors.black.withOpacity(0.25),
+                            fontSize: snapshot.hasData
+                                ? snapshot.data.index ==
+                                        controller.caption.indexOf(element)
+                                    ? 14.sp
+                                    : 10.sp
+                                : 10.sp,
+                            fontWeight: snapshot.hasData
+                                ? snapshot.data.index ==
+                                        controller.caption.indexOf(element)
+                                    ? FontWeight.w700
+                                    : FontWeight.w400
+                                : FontWeight.w400),
+                        textAlign: TextAlign.center,
+                      ),
                     );
                   }).toList()),
             );
@@ -622,5 +637,17 @@ class _PlayerState extends State<Player> {
     const AsyncSnapshot.waiting();
     Get.find<PlayerController>().caption.value = srtFile;
     print(srtFile);
+  }
+
+  void _scrollToCurrentPosition() {
+    final currentIndex = controller.audioPlayer.value.position.inSeconds;
+    final itemExtent = 56.h; // Adjust this value based on your ListTile height
+    final offset = currentIndex * itemExtent;
+
+    controller.scrollController.animateTo(
+      offset,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
   }
 }

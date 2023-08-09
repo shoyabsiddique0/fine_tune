@@ -1,3 +1,4 @@
+import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller.dart';
 import 'package:fine_tune/Widgets/HomeWidget/card_view.dart';
 import 'package:fine_tune/Widgets/LibraryWidget/watchlist_card.dart';
 import 'package:flutter/material.dart';
@@ -218,7 +219,7 @@ class LibraryController extends GetxController
   @override
   void onInit() {
     // TODO: implement onInit
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
     super.onInit();
   }
 }

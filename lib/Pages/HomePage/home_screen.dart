@@ -184,6 +184,14 @@ class HomeScreen extends StatelessWidget {
                       },
                       itemCount: controller.continueList.length),
                 )),
+            Padding(
+              padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
+              child: Divider(
+                color: Color(0xff272626),
+                thickness: 3.h,
+                height: 3.h,
+              ),
+            ),
             Header(
                 title: "Featured Album",
                 child: SizedBox(
@@ -199,6 +207,14 @@ class HomeScreen extends StatelessWidget {
                       },
                       itemCount: controller.featuredList.length),
                 )),
+            Padding(
+              padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
+              child: Divider(
+                color: Color(0xff272626),
+                thickness: 3.h,
+                height: 3.h,
+              ),
+            ),
             Header(
                 title: "Trending Podcast",
                 child: SizedBox(
@@ -214,6 +230,14 @@ class HomeScreen extends StatelessWidget {
                       },
                       itemCount: controller.trendingList.length),
                 )),
+            Padding(
+              padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
+              child: Divider(
+                color: Color(0xff272626),
+                thickness: 3.h,
+                height: 3.h,
+              ),
+            ),
             Header(
                 title: "Top Episodes",
                 child: SizedBox(
@@ -229,6 +253,14 @@ class HomeScreen extends StatelessWidget {
                       },
                       itemCount: controller.topList.length),
                 )),
+            Padding(
+              padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
+              child: Divider(
+                color: Color(0xff272626),
+                thickness: 3.h,
+                height: 3.h,
+              ),
+            ),
             SizedBox(
               height: 115.h,
             ),

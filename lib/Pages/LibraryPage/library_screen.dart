@@ -5,7 +5,6 @@ import 'package:fine_tune/Widgets/LibraryWidget/custom_search_bar.dart';
 import 'package:fine_tune/Widgets/LibraryWidget/downloads.dart';
 import 'package:fine_tune/Widgets/LibraryWidget/liked.dart';
 import 'package:fine_tune/Widgets/LibraryWidget/listen_now.dart';
-import 'package:fine_tune/Widgets/LibraryWidget/podcast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -20,7 +19,7 @@ class LibraryScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff1c1b1b),
       body: DefaultTabController(
-        length: 4,
+        length: 3,
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
@@ -42,6 +41,7 @@ class LibraryScreen extends StatelessWidget {
                               begin: Alignment.bottomCenter,
                               end: Alignment.topCenter)),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,18 +131,6 @@ class LibraryScreen extends StatelessWidget {
                                   ),
                                 )),
                               ),
-                              SizedBox(
-                                width: 90.w,
-                                height: 30.h,
-                                child: Center(
-                                    child: Text(
-                                  "Podcasts",
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                )),
-                              ),
                             ],
                             isScrollable: true,
                             indicatorColor: primaryColor,
@@ -186,6 +174,8 @@ class LibraryScreen extends StatelessWidget {
             ];
           },
           body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
                 child: TabBarView(
@@ -194,7 +184,6 @@ class LibraryScreen extends StatelessWidget {
                     ListenNow(),
                     Liked(),
                     Downloads(),
-                    Podcast(),
                   ],
                   // physics: NeverScrollableScrollPhysics(),
                 ),

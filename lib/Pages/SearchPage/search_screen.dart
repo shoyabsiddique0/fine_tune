@@ -1,4 +1,5 @@
 import 'package:fine_tune/Pages/SearchPage/search_controller.dart';
+import 'package:fine_tune/Routes/app_route.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Theme/app_ratio.dart';
 import 'package:fine_tune/Widgets/LibraryWidget/custom_search_bar.dart';
@@ -59,10 +60,13 @@ class SearchScreen extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.only(top: 25.h),
                         // width: 85.w,
-                        child: CircleAvatar(
-                          radius: 18.w,
-                          backgroundImage:
-                              const AssetImage("assets/AuthAssets/profile.png"),
+                        child: InkWell(
+                          onTap: () => Get.toNamed(AppRoute.profileScreen),
+                          child: CircleAvatar(
+                            radius: 18.w,
+                            backgroundImage: const AssetImage(
+                                "assets/AuthAssets/profile.png"),
+                          ),
                         ),
                       ),
                     ],
@@ -144,7 +148,7 @@ class SearchScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 40.h,
+                    height: 180.h,
                   )
                 ],
               ),

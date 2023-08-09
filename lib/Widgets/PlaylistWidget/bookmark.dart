@@ -11,7 +11,7 @@ class Bookmark extends StatelessWidget {
   Widget build(BuildContext context) {
     PlaylistController controller = Get.find<PlaylistController>();
     return Container(
-      margin: EdgeInsets.only(left: 24.w, right: 24.w, top: 10.h),
+      margin: EdgeInsets.only(left: 24.w, right: 24.w, top: 20.h),
       child: ListView.builder(
           itemCount: controller.bookmarkList.length,
           physics: NeverScrollableScrollPhysics(),

@@ -1,7 +1,9 @@
+import 'package:fine_tune/Pages/PremiumPage/premium_controller.dart';
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Widgets/PremiumWidget/subscription_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PremiumScreen extends StatelessWidget {
@@ -9,6 +11,7 @@ class PremiumScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PremiumController controller = Get.find<PremiumController>();
     return Scaffold(
       backgroundColor: Color(0xff1c1b1b),
       body: Stack(

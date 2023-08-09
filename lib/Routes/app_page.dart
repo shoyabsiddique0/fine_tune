@@ -1,3 +1,5 @@
+import 'package:fine_tune/Pages/AboutUs/about_us_binding.dart';
+import 'package:fine_tune/Pages/AboutUs/about_us_screen.dart';
 import 'package:fine_tune/Pages/AuthPage/LoginPage/login_binding.dart';
 import 'package:fine_tune/Pages/AuthPage/LoginPage/login_screen.dart';
 import 'package:fine_tune/Pages/AuthPage/OtpPage/otp_binding.dart';
@@ -16,6 +18,8 @@ import 'package:fine_tune/Pages/PlayerPage/player_binding.dart';
 import 'package:fine_tune/Pages/PlayerPage/player_screen.dart';
 import 'package:fine_tune/Pages/PremiumPage/premium_binding.dart';
 import 'package:fine_tune/Pages/PremiumPage/premium_screen.dart';
+import 'package:fine_tune/Pages/PrivacyPolicy/privacy_policy_binding.dart';
+import 'package:fine_tune/Pages/PrivacyPolicy/privacy_policy_screen.dart';
 import 'package:fine_tune/Pages/ProfilePage/EditProfilePage/edit_profile_binding.dart';
 import 'package:fine_tune/Pages/ProfilePage/EditProfilePage/edit_profile_screen.dart';
 import 'package:fine_tune/Pages/ProfilePage/MyListPage/my_list_bindng.dart';
@@ -24,6 +28,8 @@ import 'package:fine_tune/Pages/ProfilePage/profile_binding.dart';
 import 'package:fine_tune/Pages/ProfilePage/profile_screen.dart';
 import 'package:fine_tune/Pages/SearchPage/search_binding.dart';
 import 'package:fine_tune/Pages/SearchPage/search_screen.dart';
+import 'package:fine_tune/Pages/TnC/tnc_binding.dart';
+import 'package:fine_tune/Pages/TnC/tnc_screen.dart';
 import 'package:fine_tune/Routes/app_route.dart';
 import 'package:get/get.dart';
 
@@ -93,6 +99,21 @@ class AppPage {
         name: AppRoute.recentlyPlayedScreen,
         page: () => const RecentlyPlayedScreen(),
         binding: RecentlyPlayedBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoute.aboutUsScreen,
+        page: () => const AboutUs(),
+        binding: AboutUsBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoute.privacyPolicyScreen,
+        page: () => const PrivacyPolicy(),
+        binding: PrivacyPolicyBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoute.tncScreen,
+        page: () => const TnCScreen(),
+        binding: TnCBinding(),
         transition: Transition.rightToLeft),
   ];
 }

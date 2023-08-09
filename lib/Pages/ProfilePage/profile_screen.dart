@@ -101,7 +101,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Get.find<BottomNavigationController>().pageIndex.value = 2;
+                Get.find<BottomNavigationController>().changePage(2);
                 // Get.back();
               },
               child: Container(
@@ -145,7 +145,7 @@ class ProfileScreen extends StatelessWidget {
             ProfileList(
               imageLink: "assets/HomeAssets/privacyPolicy.svg",
               title: "Privacy Policy",
-              onTap: () {},
+              onTap: () => Get.toNamed(AppRoute.privacyPolicyScreen),
               textColor: whiteColor,
             ),
             ProfileList(
@@ -163,7 +163,7 @@ class ProfileScreen extends StatelessWidget {
             ProfileList(
               imageLink: "assets/HomeAssets/about.svg",
               title: "About Us",
-              onTap: () {},
+              onTap: () => Get.toNamed(AppRoute.aboutUsScreen),
               textColor: whiteColor,
             ),
             ProfileList(
@@ -283,6 +283,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     elevation: 0,
+                    isDismissible: false,
                     barrierColor: whiteColor.withOpacity(0.1));
               },
               textColor: whiteColor,
@@ -400,12 +401,13 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     elevation: 0,
+                    isDismissible: false,
                     barrierColor: whiteColor.withOpacity(0.1));
               },
               textColor: Colors.red,
             ),
             SizedBox(
-              height: 160.h,
+              height: 140.h,
             )
           ],
         ),
