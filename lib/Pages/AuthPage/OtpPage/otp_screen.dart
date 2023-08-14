@@ -18,7 +18,7 @@ class OtpScreen extends StatelessWidget {
     OtpController controller = Get.find<OtpController>();
     return Scaffold(
       body: Stack(children: [
-        Background(),
+        const Background(),
         SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.only(top: height * 0.2, bottom: height * 0.1),

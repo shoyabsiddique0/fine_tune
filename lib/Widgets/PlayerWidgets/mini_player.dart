@@ -12,7 +12,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:marquee/marquee.dart';
 import 'package:rxdart/rxdart.dart' as rx;
 
 class MiniPlayer extends StatelessWidget {
@@ -118,7 +117,7 @@ class MiniPlayer extends StatelessWidget {
                                         width: 140.w,
                                         height: 25.h,
                                         child: Text(
-                                          data.title!,
+                                          data.title,
                                           style: GoogleFonts.poppins(
                                             color: whiteColor,
                                             decoration: TextDecoration.none,

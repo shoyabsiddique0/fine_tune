@@ -107,7 +107,6 @@ class PlayerController extends GetxController {
     await audioPlayer.value
         .setAudioSource(playlist, initialIndex: 0, preload: true);
     audioPlayer.value.positionStream.listen((event) {
-      print("----> Inside");
       if (caption.isNotEmpty &&
           getSubtitleForCurrentPosition(audioPlayer.value.position, caption)
                   ?.data !=
@@ -122,8 +121,6 @@ class PlayerController extends GetxController {
     try {
       final data = await http.get(Uri.parse(url));
       final srtContent = data.body.toString();
-      print(srtContent.length);
-      print(srtContent.trim().length);
       var lines = srtContent.split('\n');
       // var subtitles = <String, String>{};
       // print("---->${lines.length}");
@@ -151,7 +148,6 @@ class PlayerController extends GetxController {
           }
           subtitles
               .add(Subtitle(index: index, start: start, end: end, data: data));
-          print("---->${subtitles.length}");
         }
         // print("---->${subtitles[subtitles.length]}");
       }
@@ -181,10 +177,8 @@ class PlayerController extends GetxController {
 
   Subtitle? getSubtitleForCurrentPosition(Duration position, caption) {
     // print("----->${caption.value.length}");
-    print("----> Called");
     for (var subtitle in caption.value) {
       if (position >= subtitle.start && position <= subtitle.end) {
-        print("----->${subtitle.start}---${subtitle.end}");
         return subtitle;
       }
     }

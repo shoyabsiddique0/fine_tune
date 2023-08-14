@@ -39,7 +39,7 @@ class CustomTextBar extends StatelessWidget {
           margin: EdgeInsets.only(bottom: 16.h),
           decoration: BoxDecoration(
               // color: whiteColor.withOpacity(0.1),
-              color: Color(0xff3E3D3D),
+              color: const Color(0xff3E3D3D),
               borderRadius: BorderRadius.all(Radius.circular(8.w))),
           child: TextFormField(
             expands: true,

@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
           //     colorBlendMode: BlendMode.softLight,
           //   ),
           // ),
-          Background(),
+          const Background(),
           Positioned(
             top: 160.h,
             right: 30.w,

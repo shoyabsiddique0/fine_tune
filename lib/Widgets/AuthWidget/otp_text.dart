@@ -32,7 +32,7 @@ class OtpText extends StatelessWidget {
           () => Container(
             decoration: BoxDecoration(
               color: isFilled.value
-                  ? Color(0xffEEEEF2).withOpacity(0.5)
+                  ? const Color(0xffEEEEF2).withOpacity(0.5)
                   : whiteColor.withOpacity(0.25),
               borderRadius: BorderRadius.circular(8.w),
             ),

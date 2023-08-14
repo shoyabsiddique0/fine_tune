@@ -15,12 +15,12 @@ class AboutUs extends StatelessWidget {
       body: Stack(children: [
         Container(
           height: 419.h,
-          child: Image.asset("assets/AuthAssets/about_us_bg.png"),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [Color(0xff0009EA), Colors.transparent],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter)),
+          child: Image.asset("assets/AuthAssets/about_us_bg.png"),
         ),
         Padding(
           padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 24.h),
