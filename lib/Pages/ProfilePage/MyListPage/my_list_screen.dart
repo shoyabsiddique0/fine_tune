@@ -14,7 +14,7 @@ class MyListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     MyListController controller = Get.find<MyListController>();
     return Scaffold(
-      backgroundColor: Color(0xff1c1b1b),
+      backgroundColor: const Color(0xff1c1b1b),
       appBar: AppBar(
         forceMaterialTransparency: true,
         backgroundColor: Colors.transparent,

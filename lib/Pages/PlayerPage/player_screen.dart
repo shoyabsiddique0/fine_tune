@@ -30,7 +30,7 @@ class PlayerScreen extends StatelessWidget {
                 Get.find<PlayerController>().showFrontSide.value =
                     !Get.find<PlayerController>().showFrontSide.value;
               },
-              icon: Icon(Icons.lyrics))
+              icon: const Icon(Icons.lyrics))
         ],
         title: StreamBuilder(
             stream: Get.find<PlayerController>()

@@ -14,7 +14,7 @@ class CastCrew extends StatelessWidget {
     PlaylistController controller = Get.find<PlaylistController>();
     return GridView.builder(
       padding: EdgeInsets.only(top: 20.h),
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 10.w,

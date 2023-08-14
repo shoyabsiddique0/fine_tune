@@ -77,14 +77,16 @@ class RecentlyPlayedScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                                 color: whiteColor),
                           )
-                        : DateTime.now().subtract(Duration(hours: 24)).day ==
+                        : DateTime.now()
+                                        .subtract(const Duration(hours: 24))
+                                        .day ==
                                     e.key.day &&
                                 DateTime.now()
-                                        .subtract(Duration(hours: 24))
+                                        .subtract(const Duration(hours: 24))
                                         .month ==
                                     e.key.month &&
                                 DateTime.now()
-                                        .subtract(Duration(hours: 24))
+                                        .subtract(const Duration(hours: 24))
                                         .year ==
                                     e.key.year
                             ? Text(

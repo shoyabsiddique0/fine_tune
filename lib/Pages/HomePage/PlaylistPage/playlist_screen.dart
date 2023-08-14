@@ -256,7 +256,7 @@ class PlaylistScreen extends StatelessWidget {
                 Expanded(
                   child: TabBarView(
                       controller: controller.tabController,
-                      children: [
+                      children: const [
                         Episodes(),
                         CastCrew(),
                         Bookmark(),

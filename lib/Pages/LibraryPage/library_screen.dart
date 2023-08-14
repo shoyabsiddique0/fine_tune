@@ -17,7 +17,7 @@ class LibraryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     LibraryController controller = Get.find<LibraryController>();
     return Scaffold(
-      backgroundColor: Color(0xff1c1b1b),
+      backgroundColor: const Color(0xff1c1b1b),
       body: DefaultTabController(
         length: 3,
         child: NestedScrollView(

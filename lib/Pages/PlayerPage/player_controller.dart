@@ -102,11 +102,6 @@ class PlayerController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
   void _init() async {
     await audioPlayer.value.setLoopMode(LoopMode.all);
     await audioPlayer.value

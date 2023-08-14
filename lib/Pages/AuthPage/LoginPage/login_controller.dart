@@ -2,15 +2,11 @@ import 'package:fine_tune/Pages/BottomNavigationBar/bottom_navigation_controller
 import 'package:fine_tune/Theme/app_color.dart';
 import 'package:fine_tune/Widgets/AuthWidget/update_pop_up.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class LoginController extends GetxController {
   @override
   void onInit() {
-    // TODO: implement onInit
     Get.find<BottomNavigationController>().displayNav.value = false;
     super.onInit();
   }

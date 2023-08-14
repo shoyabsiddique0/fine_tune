@@ -15,7 +15,7 @@ class CategoryView extends StatelessWidget {
       // margin: EdgeInsets.only(left: 24.w, right: 24.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(8.w)),
-        color: Color(0xff3D3D3D),
+        color: const Color(0xff3D3D3D),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

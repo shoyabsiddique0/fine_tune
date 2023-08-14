@@ -11,11 +11,6 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Text(
-        title,
-        style: GoogleFonts.poppins(
-            color: whiteColor, fontSize: 14.sp, fontWeight: FontWeight.w400),
-      ),
       onPressed: func,
       style: ElevatedButton.styleFrom(
           backgroundColor: primaryColor,
@@ -23,6 +18,11 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.w),
           ),
           elevation: 0),
+      child: Text(
+        title,
+        style: GoogleFonts.poppins(
+            color: whiteColor, fontSize: 14.sp, fontWeight: FontWeight.w400),
+      ),
     );
   }
 }

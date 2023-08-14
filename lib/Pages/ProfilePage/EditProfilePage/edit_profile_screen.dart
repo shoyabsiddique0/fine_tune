@@ -31,13 +31,14 @@ class EditProfileScreen extends StatelessWidget {
               fit: BoxFit.scaleDown,
             )),
       ),
-      backgroundColor: Color(0xff1c1b1b),
+      backgroundColor: const Color(0xff1c1b1b),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage("assets/AuthAssets/profile.png"),
+              backgroundImage:
+                  const AssetImage("assets/AuthAssets/profile.png"),
               radius: 80.w,
             ),
             SizedBox(

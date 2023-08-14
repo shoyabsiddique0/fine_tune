@@ -19,7 +19,7 @@ class RecentSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      visualDensity: VisualDensity(vertical: -2, horizontal: 0),
+      visualDensity: const VisualDensity(vertical: -2, horizontal: 0),
       contentPadding: EdgeInsets.zero,
       leading: Image.asset(imageLink),
       title: Text(
@@ -30,8 +30,8 @@ class RecentSearch extends StatelessWidget {
           style: GoogleFonts.poppins(
               fontSize: 12.sp, color: whiteColor.withOpacity(0.75))),
       trailing: TextButton(
-          child: SvgPicture.asset("assets/HomeAssets/cross.svg"),
-          onPressed: func),
+          onPressed: func,
+          child: SvgPicture.asset("assets/HomeAssets/cross.svg")),
     );
   }
 }

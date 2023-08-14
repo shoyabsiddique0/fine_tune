@@ -178,7 +178,7 @@ class ProfileScreen extends StatelessWidget {
                       height: 140.h,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15.w),
-                          color: Color(0xff1c1b1b)),
+                          color: const Color(0xff1c1b1b)),
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -299,7 +299,7 @@ class ProfileScreen extends StatelessWidget {
                       height: 180.h,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15.w),
-                          color: Color(0xff1b1c1c)),
+                          color: const Color(0xff1b1c1c)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -310,7 +310,7 @@ class ProfileScreen extends StatelessWidget {
                               Row(
                                 children: [
                                   CircleAvatar(
-                                    backgroundColor: Color(0xff3C1717),
+                                    backgroundColor: const Color(0xff3C1717),
                                     child: SvgPicture.asset(
                                         "assets/HomeAssets/delete.svg"),
                                   ),

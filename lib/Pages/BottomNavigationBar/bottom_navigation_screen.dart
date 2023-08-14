@@ -90,7 +90,7 @@ class BottomNavigationScreen extends StatelessWidget {
                       icon: SvgPicture.asset(
                         "assets/NavBarAssets/home.svg",
                         width: 18.w,
-                        color: const Color(0xff8D8A8A),
+                        theme: const SvgTheme(currentColor: Color(0xff8D8A8A)),
                       ),
                       label: "Home",
                     ),
@@ -101,9 +101,8 @@ class BottomNavigationScreen extends StatelessWidget {
                         ),
                         icon: SvgPicture.asset(
                           "assets/NavBarAssets/search.svg",
-                          theme: SvgTheme(),
+                          theme: const SvgTheme(),
                           width: 18.w,
-                          color: const Color(0xff8D8A8A),
                         ),
                         label: "Search"),
                     BottomNavigationBarItem(
@@ -147,7 +146,7 @@ class BottomNavigationScreen extends StatelessWidget {
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500),
                   unselectedLabelStyle: GoogleFonts.poppins(
-                      color: Color(0xff5d5d5d),
+                      color: const Color(0xff5d5d5d),
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500),
                 ),

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fine_tune/Pages/AuthPage/LoginPage/login_controller.dart';
 import 'package:fine_tune/Routes/app_route.dart';
 import 'package:fine_tune/Theme/app_color.dart';

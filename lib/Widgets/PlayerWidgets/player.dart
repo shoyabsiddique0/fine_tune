@@ -633,18 +633,5 @@ class _PlayerState extends State<Player> {
         .getCloseCaptionFile(metadata.extras?["lyrics"]);
     const AsyncSnapshot.waiting();
     Get.find<PlayerController>().caption.value = srtFile;
-    print(srtFile);
-  }
-
-  void _scrollToCurrentPosition() {
-    final currentIndex = controller.audioPlayer.value.position.inSeconds;
-    final itemExtent = 56.h; // Adjust this value based on your ListTile height
-    final offset = currentIndex * itemExtent;
-
-    controller.scrollController.animateTo(
-      offset,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
   }
 }

@@ -40,14 +40,14 @@ class PlaylistController extends GetxController
     },
   ];
   var bookmarkList = [
-    Duration(minutes: 2, seconds: 10),
-    Duration(minutes: 2, seconds: 10),
-    Duration(minutes: 2, seconds: 10),
-    Duration(minutes: 2, seconds: 10),
-    Duration(minutes: 2, seconds: 10),
-    Duration(minutes: 2, seconds: 10),
-    Duration(minutes: 2, seconds: 10),
-    Duration(minutes: 2, seconds: 10),
+    const Duration(minutes: 2, seconds: 10),
+    const Duration(minutes: 2, seconds: 10),
+    const Duration(minutes: 2, seconds: 10),
+    const Duration(minutes: 2, seconds: 10),
+    const Duration(minutes: 2, seconds: 10),
+    const Duration(minutes: 2, seconds: 10),
+    const Duration(minutes: 2, seconds: 10),
+    const Duration(minutes: 2, seconds: 10),
   ];
   var moreList = [
     {
@@ -151,19 +151,7 @@ class PlaylistController extends GetxController
       url,
       type: SubtitleType.vtt,
     ));
-    print(controller.initialized);
     await controller.initial();
-    print(controller.initialized);
-    print(controller.subtitles);
-    printResult(controller.subtitles);
     super.onInit();
-  }
-
-  void printResult(List<Subtitle> subtitles) {
-    subtitles.sort((s1, s2) => s1.compareTo(s2));
-    for (var result in subtitles) {
-      print(
-          '--->(${result.index}) Start: ${result.start}, end: ${result.end} [${result.data}]');
-    }
   }
 }

@@ -38,7 +38,7 @@ class ListenNow extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
           child: Divider(
-            color: Color(0xff272626),
+            color: const Color(0xff272626),
             thickness: 3.h,
             height: 3.h,
           ),
@@ -80,7 +80,7 @@ class ListenNow extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
           child: Divider(
-            color: Color(0xff272626),
+            color: const Color(0xff272626),
             thickness: 3.h,
             height: 3.h,
           ),
@@ -103,7 +103,7 @@ class ListenNow extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
           child: Divider(
-            color: Color(0xff272626),
+            color: const Color(0xff272626),
             thickness: 3.h,
             height: 3.h,
           ),
@@ -126,7 +126,7 @@ class ListenNow extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 15.h),
           child: Divider(
-            color: Color(0xff272626),
+            color: const Color(0xff272626),
             thickness: 3.h,
             height: 3.h,
           ),

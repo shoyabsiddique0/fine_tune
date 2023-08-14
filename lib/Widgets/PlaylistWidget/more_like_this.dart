@@ -17,7 +17,7 @@ class MoreLikeThis extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.only(left: 24.w, right: 24.w, top: 20.h),
             child: GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 10.h,
@@ -25,7 +25,7 @@ class MoreLikeThis extends StatelessWidget {
                     childAspectRatio: 1 / 1.4),
                 itemCount: controller.moreList.length,
                 itemBuilder: (context, index) {
-                  return Container(
+                  return SizedBox(
                     // height: 60.h,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,

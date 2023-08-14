@@ -38,7 +38,7 @@ class CustomSearchBar extends StatelessWidget {
             prefixIcon: SvgPicture.asset(
               "assets/NavBarAssets/search.svg",
               fit: BoxFit.scaleDown,
-              color: whiteColor.withOpacity(0.25),
+              theme: SvgTheme(currentColor: whiteColor.withOpacity(0.25)),
             ),
             contentPadding: EdgeInsets.zero,
             suffixIcon: hasSuffix
@@ -128,7 +128,7 @@ class CustomSearchBar extends StatelessWidget {
                     child: SvgPicture.asset(
                       "assets/NavBarAssets/sort.svg",
                       fit: BoxFit.scaleDown,
-                      color: whiteColor,
+                      theme: const SvgTheme(currentColor: whiteColor),
                     ),
                   )
                 : const SizedBox.shrink(),

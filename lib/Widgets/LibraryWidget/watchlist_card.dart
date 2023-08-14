@@ -153,7 +153,7 @@ class WatchlistCard extends StatelessWidget {
                                           ? SizedBox(
                                               height: 16.w,
                                             )
-                                          : SizedBox.shrink(),
+                                          : const SizedBox.shrink(),
                                       isDownloads
                                           ? Row(
                                               children: [
@@ -175,7 +175,7 @@ class WatchlistCard extends StatelessWidget {
                                                 )
                                               ],
                                             )
-                                          : SizedBox.shrink(),
+                                          : const SizedBox.shrink(),
                                     ],
                                   ),
                                 ),
