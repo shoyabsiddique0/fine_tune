@@ -14,7 +14,12 @@ class Downloads extends StatelessWidget {
       child: ListView(
           shrinkWrap: true,
           // physics: const NeverScrollableScrollPhysics(),
-          children: controller.downloadList),
+          children: [
+            for (var a in controller.downloadList) ...[a],
+            SizedBox(
+              height: 130.h,
+            )
+          ]),
     );
   }
 }

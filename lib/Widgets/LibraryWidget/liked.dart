@@ -14,7 +14,12 @@ class Liked extends StatelessWidget {
       child: ListView(
           shrinkWrap: true,
           // physics: const NeverScrollableScrollPhysics(),
-          children: controller.likedList),
+          children: [
+            for (var a in controller.likedList) ...[a],
+            SizedBox(
+              height: 130.h,
+            )
+          ]),
     );
   }
 }

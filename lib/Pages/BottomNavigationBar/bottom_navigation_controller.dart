@@ -10,6 +10,7 @@ class BottomNavigationController extends GetxController {
   final pageIndex = 0.obs;
   final homeIndex = 0.obs;
   final libIndex = 0.obs;
+  final showPlayer = true.obs;
   final pages = <Widget>[].obs;
   @override
   void onInit() {

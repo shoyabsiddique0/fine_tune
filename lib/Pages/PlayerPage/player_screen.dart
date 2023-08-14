@@ -24,6 +24,14 @@ class PlayerScreen extends StatelessWidget {
           child: SvgPicture.asset("assets/HomeAssets/prev.svg"),
           onPressed: () => Get.back(),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.find<PlayerController>().showFrontSide.value =
+                    !Get.find<PlayerController>().showFrontSide.value;
+              },
+              icon: Icon(Icons.lyrics))
+        ],
         title: StreamBuilder(
             stream: Get.find<PlayerController>()
                 .audioPlayer

@@ -11,45 +11,54 @@ class MoreLikeThis extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PlaylistController controller = Get.find<PlaylistController>();
-    return Container(
-      margin: EdgeInsets.only(left: 24.w, right: 24.w, top: 20.h),
-      child: GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10.h,
-              crossAxisSpacing: 24.w,
-              childAspectRatio: 1 / 1.4),
-          itemCount: controller.moreList.length,
-          itemBuilder: (context, index) {
-            return Container(
-              // height: 60.h,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(controller.moreList[index]["imageLink"]!),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Text(
-                    controller.moreList[index]["title"]!,
-                    style: GoogleFonts.poppins(
-                        fontSize: 14.sp,
-                        color: whiteColor,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  Text(
-                    controller.moreList[index]["episodes"]!,
-                    style: GoogleFonts.poppins(
-                        fontSize: 12.sp,
-                        color: whiteColor.withOpacity(0.8),
-                        fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
-            );
-          }),
+    return Column(
+      children: [
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(left: 24.w, right: 24.w, top: 20.h),
+            child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10.h,
+                    crossAxisSpacing: 24.w,
+                    childAspectRatio: 1 / 1.4),
+                itemCount: controller.moreList.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    // height: 60.h,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(controller.moreList[index]["imageLink"]!),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Text(
+                          controller.moreList[index]["title"]!,
+                          style: GoogleFonts.poppins(
+                              fontSize: 14.sp,
+                              color: whiteColor,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        Text(
+                          controller.moreList[index]["episodes"]!,
+                          style: GoogleFonts.poppins(
+                              fontSize: 12.sp,
+                              color: whiteColor.withOpacity(0.8),
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+          ),
+        ),
+        SizedBox(
+          height: 60.h,
+        )
+      ],
     );
   }
 }

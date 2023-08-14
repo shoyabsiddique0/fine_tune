@@ -28,7 +28,9 @@ class BottomNavigationScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                BounceInUp(child: MiniPlayer()),
+                Visibility(
+                    visible: bottomNavigationController.showPlayer.value,
+                    child: BounceInUp(child: MiniPlayer())),
                 GestureDetector(
                   onTap: () => Get.currentRoute != AppRoute.premiumScreen
                       ? bottomNavigationController.changePage(2)

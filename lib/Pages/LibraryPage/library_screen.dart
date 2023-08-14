@@ -31,7 +31,7 @@ class LibraryScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 180.h,
+                      height: 190.h,
                       padding:
                           EdgeInsets.only(left: 24.w, right: 24.w, top: 20.h),
                       // width: double.infinity,
@@ -187,9 +187,6 @@ class LibraryScreen extends StatelessWidget {
                   ],
                   // physics: NeverScrollableScrollPhysics(),
                 ),
-              ),
-              SizedBox(
-                height: 130.h,
               )
             ],
           ),

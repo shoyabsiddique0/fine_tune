@@ -14,7 +14,12 @@ class Episodes extends StatelessWidget {
       child: ListView(
           // shrinkWrap: false,
           // physics: const NeverScrollableScrollPhysics(),
-          children: controller.episodeList),
+          children: [
+            for (var a in controller.episodeList) ...[a],
+            SizedBox(
+              height: 150.h,
+            )
+          ]),
     );
   }
 }

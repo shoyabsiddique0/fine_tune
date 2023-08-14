@@ -534,23 +534,20 @@ class _PlayerState extends State<Player> {
   }
 
   Widget _buildFlipAnimation(metadata) {
-    return GestureDetector(
-        onTap: () =>
-            controller.showFrontSide.value = !controller.showFrontSide.value,
-        child: Obx(
-          () => AnimatedSwitcher(
-            duration: Duration(milliseconds: 2000),
-            child: controller.showFrontSide.value
-                ? _buildFront(metadata)
-                : _buildRear(),
-          ),
-        ));
+    return Obx(
+      () => AnimatedSwitcher(
+        duration: const Duration(milliseconds: 2000),
+        child: controller.showFrontSide.value
+            ? _buildFront(metadata)
+            : _buildRear(),
+      ),
+    );
   }
 
   Widget _buildFront(metadata) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(0),
-      child: Container(
+      child: SizedBox(
         height: 260.h,
         width: 300.w,
         // height: 400.h,
@@ -588,7 +585,7 @@ class _PlayerState extends State<Player> {
                 final offset = index * itemExtent;
                 controller.scrollController.animateTo(
                   offset,
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
               }
@@ -597,7 +594,7 @@ class _PlayerState extends State<Player> {
               () => ListView(
                   controller: controller.scrollController,
                   itemExtent: 40.h,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   children: controller.caption.map((element) {
                     // print("#${scroll}");
                     return ListTile(
@@ -646,7 +643,7 @@ class _PlayerState extends State<Player> {
 
     controller.scrollController.animateTo(
       offset,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );
   }

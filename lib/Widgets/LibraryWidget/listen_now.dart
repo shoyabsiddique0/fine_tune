@@ -132,7 +132,7 @@ class ListenNow extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 45.h,
+          height: 130.h,
         )
       ],
     );

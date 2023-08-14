@@ -119,8 +119,6 @@ class PlaylistScreen extends StatelessWidget {
                                           children: [
                                             SvgPicture.asset(
                                                 "assets/HomeAssets/download.svg"),
-                                            SvgPicture.asset(
-                                                "assets/HomeAssets/option.svg")
                                           ],
                                         ),
                                       ),
@@ -265,9 +263,6 @@ class PlaylistScreen extends StatelessWidget {
                         MoreLikeThis(),
                       ]),
                 ),
-                SizedBox(
-                  height: 150.h,
-                )
               ],
             ),
           ),
